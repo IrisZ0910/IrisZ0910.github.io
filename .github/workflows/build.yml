@@ -1,0 +1,58 @@
+name: 自动构建博客
+
+# 只要 posts/ 或 pages/ 里的 Markdown 有变化，就自动重新生成整站
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**'
+      - 'pages/**'
+      - 'build.js'
+      - 'blog.config.js'
+      - 'assets/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+# 允许机器人把生成好的文件提交回仓库
+permissions:
+  contents: write
+
+concurrency:
+  group: build-blog
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # 避免机器人自己的提交再次触发构建
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Node 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci --omit=dev || npm install --omit=dev
+
+      - name: 构建网站
+        run: node build.js
+
+      - name: 提交生成的文件
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "没有需要提交的变化"
+          else
+            git commit -m "chore: 自动构建网站 [skip ci]"
+            git push
+          fi

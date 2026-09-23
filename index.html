@@ -1,166 +1,128 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的博客 | 欢迎</title>
-    <style>
-        :root {
-            --bg: #fafafa;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --primary: #e91e63;
-            --card-bg: #ffffff;
-            --radius: 12px;
-            --max-width: 720px;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0f172a;
-                --text: #e5e7eb;
-                --muted: #94a3b8;
-                --card-bg: #1e293b;
-                --primary: #f472b6;
-            }
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-            font-size: 17px;
-            line-height: 1.75;
-            transition: background 0.3s, color 0.3s;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-        header {
-            padding: 30px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(128, 128, 128, 0.15);
-        }
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--text);
-            text-decoration: none;
-        }
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        main {
-            flex: 1;
-            padding: 60px 0;
-        }
-        .welcome-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border: 1px solid rgba(128, 128, 128, 0.1);
-            text-align: center;
-        }
-        .welcome-card h1 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        .welcome-card p {
-            color: var(--muted);
-            margin-bottom: 25px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-        .post-list {
-            margin-top: 40px;
-            display: grid;
-            gap: 20px;
-        }
-        .post-item {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 25px;
-            text-decoration: none;
-            color: var(--text);
-            border: 1px solid rgba(128, 128, 128, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .post-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-        .post-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-        .post-item .meta {
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--muted);
-            border-top: 1px solid rgba(128, 128, 128, 0.15);
-        }
-        @media (max-width: 600px) {
-            .welcome-card { padding: 25px; }
-            .welcome-card h1 { font-size: 1.6rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的博客</title>
+<meta name="description" content="IrisZ 的个人博客，记录学习、折腾与生活。">
+<meta name="author" content="IrisZ">
+<meta property="og:title" content="我的博客">
+<meta property="og:description" content="IrisZ 的个人博客，记录学习、折腾与生活。">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+/* 在页面渲染前决定深浅色，避免闪白 */
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
 </head>
-<body>
-    <header class="container">
-        <a href=" " class="logo">🌟 我的博客</a >
-        <nav class="nav-links">
-            <a href="/">首页</a >
-            <a href="/archives">归档</a >
-            <a href="/about">关于</a >
-        </nav>
-    </header>
-    <main class="container">
-        <div class="welcome-card">
-            <h1>你好，世界！</h1>
-            <p>欢迎来到我的 GitHub 博客主页。这里将记录我的学习、生活和思考。</p >
-            <a href="/archives" class="btn">开始阅读</a >
-        </div>
-        <div class="post-list">
-            <a href="#" class="post-item">
-                <h3>我的第一篇文章</h3>
-                <div class="meta">2026-09-22 · 生活随笔</div>
-            </a >
-            <a href="#" class="post-item">
-                <h3>折腾 GitHub Pages 的记录</h3>
-                <div class="meta">2026-09-20 · 技术折腾</div>
-            </a >
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2026 我的博客. Powered by GitHub Pages.</p >
-    </footer>
+<body class="">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">I</span>
+      <span class="brand-text">我的博客</span>
+    </a>
+    <nav class="nav" aria-label="主导航"><a class="nav-link is-active" href="/" aria-current="page">首页</a><a class="nav-link" href="/archives.html">归档</a><a class="nav-link" href="/tags.html">标签</a><a class="nav-link" href="/about.html">关于</a></nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换深浅色">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <span class="hero-avatar">I</span>
+      <h1 class="hero-title">你好，世界 👋</h1>
+      <p class="hero-text">欢迎来到我的小站。这里会记录我的学习笔记、技术折腾和日常随笔。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#posts">开始阅读</a>
+        <a class="btn btn-ghost" href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">我的 GitHub</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>2</strong><span>篇文章</span></li>
+        <li><strong>3</strong><span>个标签</span></li>
+        <li><strong>2026-09-22</strong><span>最近更新</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="posts wrap" id="posts">
+    <div class="section-head">
+      <h2 class="section-title">最新文章</h2>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <input id="searchInput" type="search" placeholder="搜索文章…" aria-label="搜索文章" autocomplete="off">
+      </div>
+    </div>
+    <div class="filters" id="tagFilters" role="group" aria-label="按标签筛选">
+      <button class="chip is-active" type="button" data-tag="*">全部</button>
+      <button class="chip" type="button" data-tag="技术折腾">技术折腾<span class="chip-count">1</span></button><button class="chip" type="button" data-tag="生活随笔">生活随笔<span class="chip-count">1</span></button><button class="chip" type="button" data-tag="GitHub">GitHub<span class="chip-count">1</span></button>
+    </div>
+    <div class="post-grid" id="postGrid">
+      <article class="card" data-tags="生活随笔" data-search="我的第一篇文章 生活随笔 你好，欢迎来到我的小站 👋 这是第一篇文章。写完它，这个博客就算是真的开张了。 为什么要写博客 其实想法很朴素：脑子里想过的东西，不写下来就会忘掉。 学过的知识，过两周就只剩下&quot;我好像学过&quot;的印象 折腾成功的配置，下次再遇到又要重新搜一遍 偶尔的一些想法，当时觉得很有趣，转身就没了 写下来，一来是给自己留个底稿，二来如果刚好能帮到别人，那就更好了。 打算写点什么 大致会有这么几类： 1. 学习笔记 —— 看书、看课、做实验的时候整理的东西 2. 技术折腾 —— 装环境、配工具、踩过的坑和解法 3. 生活随笔 —— 一些想法、一些小事、一些心情 不追求篇篇精品，能坚持写下去最重要。 给自己的三个小约定 1. 不通顺没关系，先写出来 2. 不追求长篇大论，几百字也发 3. 不定更新频率，想写就写 就这些。希望下次回来看这篇文章的时候，已经写了不少东西了 🌱">
+        <a class="card-link" href="/posts/2026-09-22-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-meta">
+            <time datetime="2026-09-22T22:10:00+08:00">2026-09-22</time>
+            <span class="meta-time">22:10</span>
+            <span class="meta-dot"></span>
+            <span>1 分钟</span>
+          </div>
+          <h2 class="card-title">我的第一篇文章</h2>
+          <p class="card-excerpt">开博第一篇。为什么要写博客，以及打算在这里写点什么。</p>
+          <div class="card-foot">
+            <span class="tag">生活随笔</span>
+            <span class="card-more">阅读 →</span>
+          </div>
+        </a>
+      </article>
+      <article class="card" data-tags="技术折腾,GitHub" data-search="折腾 GitHub Pages 的记录 技术折腾 GitHub 一直想有个自己的小角落，能写点东西。试过几个平台，最后还是觉得 GitHub Pages 最合心意：免费、干净、域名好看（ ），而且所有内容都是自己的文件，不怕哪天平台关门。 为什么选 GitHub Pages 对比了一下常见的几种方案： | 方案 | 优点 | 顾虑 | | --- | --- | --- | | 博客平台（掘金、知乎） | 有流量、不用维护 | 排版受限，不像&quot;自己的地方&quot; | | 云服务器 + 博客程序 | 想怎么改就怎么改 | 要买服务器、要维护、要备案 | | GitHub Pages | 免费、纯静态、域名固定 | 只能放静态页面 | 对我来说，写博客主要是为了记录和整理，不需要太多花哨功能，所以 GitHub Pages 刚好。 动手的过程 1. 注册 GitHub 账号，用户名决定了域名，所以当时纠结了很久叫啥 🙈 2. 新建一个仓库，名字必须是 ，这样才是主页 3. 往仓库里放一个 4. 等一两分钟，访问 就能看到了 最开始的 是手写的，长得比较朴素，但看到自己的网页出现在互联网上，还是有点小激动。 遇到的小坑 1. 改完文件要等一会儿 GitHub">
+        <a class="card-link" href="/posts/2026-09-20-%E6%8A%98%E8%85%BE-github-pages-%E7%9A%84%E8%AE%B0%E5%BD%95/">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-meta">
+            <time datetime="2026-09-20T21:30:00+08:00">2026-09-20</time>
+            <span class="meta-time">21:30</span>
+            <span class="meta-dot"></span>
+            <span>2 分钟</span>
+          </div>
+          <h2 class="card-title">折腾 GitHub Pages 的记录</h2>
+          <p class="card-excerpt">从零开始用 GitHub Pages 搭一个自己的博客，踩过的坑和一些小心得。</p>
+          <div class="card-foot">
+            <span class="tag">技术折腾</span><span class="tag">GitHub</span>
+            <span class="card-more">阅读 →</span>
+          </div>
+        </a>
+      </article>
+    </div>
+    <p class="empty" id="emptyState" hidden>没有找到匹配的文章 🙈</p>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 IrisZ · 用 ❤️ 和 Markdown 写成</p>
+    <p class="footer-links">
+      <a href="/archives.html">归档</a>
+      <a href="/tags.html">标签</a>
+      <a href="/atom.xml">RSS</a>
+      <a href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+<script>window.BLOG = {repo: "IrisZ0910/IrisZ0910.github.io", branch: "main", siteTitle: "我的博客"};</script>
+<script src="/assets/js/app.js" defer></script>
 </body>
 </html>

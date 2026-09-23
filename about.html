@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于我 · 我的博客</title>
+<meta name="description" content="一个正在学习和折腾的人">
+<meta name="author" content="IrisZ">
+<meta property="og:title" content="关于我 · 我的博客">
+<meta property="og:description" content="一个正在学习和折腾的人">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+/* 在页面渲染前决定深浅色，避免闪白 */
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">I</span>
+      <span class="brand-text">我的博客</span>
+    </a>
+    <nav class="nav" aria-label="主导航"><a class="nav-link" href="/">首页</a><a class="nav-link" href="/archives.html">归档</a><a class="nav-link" href="/tags.html">标签</a><a class="nav-link is-active" href="/about.html" aria-current="page">关于</a></nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换深浅色">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article class="post wrap">
+    <header class="post-header">
+      <h1 class="post-title">关于我</h1>
+      <p class="page-desc">一个正在学习和折腾的人</p>
+    </header>
+    <div class="post-content prose">
+<p>你好，我是 <strong>IrisZ</strong> 👋</p>
+<p>这里是我的个人博客，用来记录我的学习、折腾和日常。</p>
+<h2 id="关于这个博客">关于这个博客<a class="heading-anchor" href="#%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2" aria-label="链接到此标题">#</a></h2>
+<ul>
+<li><strong>写什么</strong>：学习笔记、技术折腾、生活随笔</li>
+<li><strong>用什么写的</strong>：Markdown，每一篇文章就是一个 <code>.md</code> 文件</li>
+<li><strong>怎么发布的</strong>：把 Markdown 文件上传到 GitHub，剩下的交给自动构建</li>
+<li><strong>技术上</strong>：纯静态站点，托管在 GitHub Pages 上</li>
+</ul>
+<h2 id="怎么联系我">怎么联系我<a class="heading-anchor" href="#%E6%80%8E%E4%B9%88%E8%81%94%E7%B3%BB%E6%88%91" aria-label="链接到此标题">#</a></h2>
+<ul>
+<li>GitHub：<a href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">IrisZ0910</a></li>
+<li>博客订阅：<a href="/atom.xml">RSS</a></li>
+</ul>
+<p>如果这里的某篇文章帮到了你，或者你想指出文中的错误，欢迎在 GitHub 上找我 🙂</p>
+<hr>
+<p><small>这个页面在 <code>pages/about.md</code> 里，改完保存重新构建就会更新。</small></p>
+
+    </div>
+  </article>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 IrisZ · 用 ❤️ 和 Markdown 写成</p>
+    <p class="footer-links">
+      <a href="/archives.html">归档</a>
+      <a href="/tags.html">标签</a>
+      <a href="/atom.xml">RSS</a>
+      <a href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+<script>window.BLOG = {repo: "IrisZ0910/IrisZ0910.github.io", branch: "main", siteTitle: "我的博客"};</script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

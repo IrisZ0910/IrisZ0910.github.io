@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>归档 · 我的博客</title>
+<meta name="description" content="全部文章归档，共 2 篇">
+<meta name="author" content="IrisZ">
+<meta property="og:title" content="归档 · 我的博客">
+<meta property="og:description" content="全部文章归档，共 2 篇">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+/* 在页面渲染前决定深浅色，避免闪白 */
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">I</span>
+      <span class="brand-text">我的博客</span>
+    </a>
+    <nav class="nav" aria-label="主导航"><a class="nav-link" href="/">首页</a><a class="nav-link is-active" href="/archives.html" aria-current="page">归档</a><a class="nav-link" href="/tags.html">标签</a><a class="nav-link" href="/about.html">关于</a></nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换深浅色">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head wrap">
+    <h1>归档</h1>
+    <p class="page-desc">共 2 篇文章，按时间倒序排列。</p>
+  </section>
+  <section class="wrap archives">
+    <section class="timeline-year">
+      <h2 class="year-title"><span>2026</span><em>2 篇</em></h2>
+      <ul class="timeline">
+        <li>
+          <time datetime="2026-09-22T22:10:00+08:00">09-22</time>
+          <a href="/posts/2026-09-22-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
+        </li>
+        <li>
+          <time datetime="2026-09-20T21:30:00+08:00">09-20</time>
+          <a href="/posts/2026-09-20-%E6%8A%98%E8%85%BE-github-pages-%E7%9A%84%E8%AE%B0%E5%BD%95/">折腾 GitHub Pages 的记录</a>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 IrisZ · 用 ❤️ 和 Markdown 写成</p>
+    <p class="footer-links">
+      <a href="/archives.html">归档</a>
+      <a href="/tags.html">标签</a>
+      <a href="/atom.xml">RSS</a>
+      <a href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+<script>window.BLOG = {repo: "IrisZ0910/IrisZ0910.github.io", branch: "main", siteTitle: "我的博客"};</script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

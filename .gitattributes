@@ -1,0 +1,10 @@
+# 让 Windows 批处理保持 CRLF 换行，否则 cmd 可能无法运行
+*.bat text eol=crlf
+
+# 其余文本统一用 LF
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.yml text eol=lf

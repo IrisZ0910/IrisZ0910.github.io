@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>折腾 GitHub Pages 的记录 · 我的博客</title>
+<meta name="description" content="从零开始用 GitHub Pages 搭一个自己的博客，踩过的坑和一些小心得。">
+<meta name="author" content="IrisZ">
+<meta property="og:title" content="折腾 GitHub Pages 的记录 · 我的博客">
+<meta property="og:description" content="从零开始用 GitHub Pages 搭一个自己的博客，踩过的坑和一些小心得。">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+/* 在页面渲染前决定深浅色，避免闪白 */
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="is-post">
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="reading-progress" aria-hidden="true"><span id="readingBar"></span></div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">I</span>
+      <span class="brand-text">我的博客</span>
+    </a>
+    <nav class="nav" aria-label="主导航"><a class="nav-link" href="/">首页</a><a class="nav-link" href="/archives.html">归档</a><a class="nav-link" href="/tags.html">标签</a><a class="nav-link" href="/about.html">关于</a></nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换深浅色">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article class="post wrap">
+    <header class="post-header">
+      <a class="back-link" href="/">← 返回首页</a>
+      <h1 class="post-title">折腾 GitHub Pages 的记录</h1>
+      <div class="post-meta">
+        <time datetime="2026-09-20T21:30:00+08:00">2026-09-20 21:30</time>
+        <span class="meta-dot"></span>
+        <span>2 分钟阅读</span>
+        <span class="meta-dot"></span><span class="post-tags"><a class="tag" href="/tags.html#%E6%8A%80%E6%9C%AF%E6%8A%98%E8%85%BE">技术折腾</a><a class="tag" href="/tags.html#GitHub">GitHub</a></span>
+      </div>
+    </header>
+    <div class="post-layout has-toc">
+      <aside class="toc" aria-label="目录">
+        <p class="toc-title">目录</p>
+        <ul>
+          <li class="toc-h2"><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89-github-pages">为什么选 GitHub Pages</a></li>
+          <li class="toc-h2"><a href="#%E5%8A%A8%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B">动手的过程</a></li>
+          <li class="toc-h2"><a href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%B0%8F%E5%9D%91">遇到的小坑</a></li>
+          <li class="toc-h3"><a href="#1-%E6%94%B9%E5%AE%8C%E6%96%87%E4%BB%B6%E8%A6%81%E7%AD%89%E4%B8%80%E4%BC%9A%E5%84%BF">1. 改完文件要等一会儿</a></li>
+          <li class="toc-h3"><a href="#2-%E6%96%87%E7%AB%A0%E7%82%B9%E4%B8%8D%E8%BF%9B%E5%8E%BB">2. 文章点不进去</a></li>
+          <li class="toc-h3"><a href="#3-%E8%B7%AF%E5%BE%84%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99">3. 路径的大小写</a></li>
+          <li class="toc-h2"><a href="#%E5%90%8E%E6%9D%A5%E7%94%A8%E4%B8%8A%E7%9A%84%E5%91%BD%E4%BB%A4">后来用上的命令</a></li>
+          <li class="toc-h2"><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+        </ul>
+      </aside>
+      <div class="post-content prose">
+<p>一直想有个自己的小角落，能写点东西。试过几个平台，最后还是觉得 <strong>GitHub Pages</strong> 最合心意：免费、干净、域名好看（<code>名字.github.io</code>），而且所有内容都是自己的文件，不怕哪天平台关门。</p>
+<h2 id="为什么选-github-pages">为什么选 GitHub Pages<a class="heading-anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89-github-pages" aria-label="链接到此标题">#</a></h2>
+<p>对比了一下常见的几种方案：</p>
+<div class="table-wrap"><table><thead><tr><th>方案</th><th>优点</th><th>顾虑</th></tr></thead><tbody><tr><td>博客平台（掘金、知乎）</td><td>有流量、不用维护</td><td>排版受限，不像&quot;自己的地方&quot;</td></tr><tr><td>云服务器 + 博客程序</td><td>想怎么改就怎么改</td><td>要买服务器、要维护、要备案</td></tr><tr><td>GitHub Pages</td><td>免费、纯静态、域名固定</td><td>只能放静态页面</td></tr></tbody></table></div>
+<p>对我来说，写博客主要是为了<strong>记录和整理</strong>，不需要太多花哨功能，所以 GitHub Pages 刚好。</p>
+<h2 id="动手的过程">动手的过程<a class="heading-anchor" href="#%E5%8A%A8%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B" aria-label="链接到此标题">#</a></h2>
+<ol>
+<li>注册 GitHub 账号，用户名决定了域名，所以当时纠结了很久叫啥 🙈</li>
+<li>新建一个仓库，名字必须是 <code>用户名.github.io</code>，这样才是主页</li>
+<li>往仓库里放一个 <code>index.html</code></li>
+<li>等一两分钟，访问 <code>https://用户名.github.io</code> 就能看到了</li>
+</ol>
+<p>最开始的 <code>index.html</code> 是手写的，长得比较朴素，但看到自己的网页出现在互联网上，还是有点小激动。</p>
+<h2 id="遇到的小坑">遇到的小坑<a class="heading-anchor" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%B0%8F%E5%9D%91" aria-label="链接到此标题">#</a></h2>
+<h3 id="1-改完文件要等一会儿">1. 改完文件要等一会儿<a class="heading-anchor" href="#1-%E6%94%B9%E5%AE%8C%E6%96%87%E4%BB%B6%E8%A6%81%E7%AD%89%E4%B8%80%E4%BC%9A%E5%84%BF" aria-label="链接到此标题">#</a></h3>
+<p>GitHub Pages 不是实时生效的，推上去之后要等构建完成（一般几十秒到一两分钟）。第一次改完刷新没变化，我还以为改错了。</p>
+<h3 id="2-文章点不进去">2. 文章点不进去<a class="heading-anchor" href="#2-%E6%96%87%E7%AB%A0%E7%82%B9%E4%B8%8D%E8%BF%9B%E5%8E%BB" aria-label="链接到此标题">#</a></h3>
+<p>一开始我把文章标题写成链接放在首页，但链接指向的是 <code>#</code>，点进去什么也没有——因为那些文章页面其实<strong>根本不存在</strong>。</p>
+<blockquote>
+<p>教训：静态网站里，每一个页面都得是真实存在的文件。首页写了个标题不等于文章就有了。</p>
+</blockquote>
+<h3 id="3-路径的大小写">3. 路径的大小写<a class="heading-anchor" href="#3-%E8%B7%AF%E5%BE%84%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99" aria-label="链接到此标题">#</a></h3>
+<p>Linux 服务器区分大小写，<code>Image.png</code> 和 <code>image.png</code> 是两个不同的文件。本地 Windows 上看着没问题，传上去就 404 了。</p>
+<h2 id="后来用上的命令">后来用上的命令<a class="heading-anchor" href="#%E5%90%8E%E6%9D%A5%E7%94%A8%E4%B8%8A%E7%9A%84%E5%91%BD%E4%BB%A4" aria-label="链接到此标题">#</a></h2>
+<p>本地预览和构建的时候会用到这几个：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">bash</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-bash"><span class="hljs-comment"># 构建整站</span>
+node build.js
+
+<span class="hljs-comment"># 本地起个服务预览</span>
+node serve.js</code></pre>
+</div>
+<p>推送更新：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">bash</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-bash">git add .
+git commit -m <span class="hljs-string">&quot;写文章&quot;</span>
+git push</code></pre>
+</div>
+<h2 id="小结">小结<a class="heading-anchor" href="#%E5%B0%8F%E7%BB%93" aria-label="链接到此标题">#</a></h2>
+<p>搭站本身不难，难的是<strong>坚持写</strong>。所以这次我特意把发布流程做得特别短：写完 Markdown，上传，剩下的事情交给自动构建。</p>
+<p>希望这个小站能一直更新下去 ✍️</p>
+
+      </div>
+    </div>
+    <nav class="post-nav" aria-label="上下篇">
+<span></span>
+      <a class="post-nav-item next" href="/posts/2026-09-22-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"><span class="post-nav-label">下一篇 →</span><span class="post-nav-title">我的第一篇文章</span></a>
+    </nav>
+  </article>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 IrisZ · 用 ❤️ 和 Markdown 写成</p>
+    <p class="footer-links">
+      <a href="/archives.html">归档</a>
+      <a href="/tags.html">标签</a>
+      <a href="/atom.xml">RSS</a>
+      <a href="https://github.com/IrisZ0910" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+<script>window.BLOG = {repo: "IrisZ0910/IrisZ0910.github.io", branch: "main", siteTitle: "我的博客"};</script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>
