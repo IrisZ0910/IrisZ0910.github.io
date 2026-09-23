@@ -43,8 +43,18 @@ function escapeHtml(str = '') {
     .replace(/'/g, '&#39;');
 }
 
-/** 去掉 Markdown 标记，得到纯文本（用于摘要和搜索索引） */
-function toPlainText(md = '') {
+/**
+ * 稳定的文本比较（按 Unicode 码点）
+ * 不用 localeCompare：它依赖系统语言环境，同一份内容在
+ * Windows 和 GitHub Actions 的 Linux 上会排出不同顺序，
+ * 导致每次自动构建都产生一次没有意义的提交。
+ */
+function compareText(a, b) {
+  if (a === b) return 0;
+  return a < b ? -1 : 1;
+}
+
+/** 去掉 Markdown 标记，得到纯文本（用于摘要和搜索索引） */function toPlainText(md = '') {
   return md
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`[^`]*`/g, ' ')
@@ -627,7 +637,7 @@ function buildPosts() {
     });
   }
 
-  posts.sort((a, b) => (a.date.iso < b.date.iso ? 1 : a.date.iso > b.date.iso ? -1 : a.title.localeCompare(b.title)));
+  posts.sort((a, b) => (a.date.iso < b.date.iso ? 1 : a.date.iso > b.date.iso ? -1 : compareText(a.title, b.title)));
   return posts;
 }
 
@@ -638,7 +648,7 @@ function collectTags(posts) {
   }
   return [...map.entries()]
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+    .sort((a, b) => b.count - a.count || compareText(a.name, b.name));
 }
 
 /* ------------------------------------------------------------------ */
