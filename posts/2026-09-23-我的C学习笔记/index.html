@@ -73,28 +73,26 @@ eg:#include&lt;stdio.h&gt;(系统头文件） #include“myheader.h&quot;(自定
 <p>注：stdio是standard input output .header （标准输入输出头文件） C的功能都在标准库里，所以要在第一行写预处理器指令</p>
 <p>2.在C语言中，函数由一个函数头和一个函数主体组成</p>
 <p>a.函数声明:告诉编译器函数的名称，返回类型和参数，他让编译器在遇到函数调用时，知道该如何处理，而不必立刻知道函数的具体实现。</p>
-<p>int add(int a, int b) {</p>
 <div class="code-block">
   <div class="code-head"><span class="code-lang">axapta</span><button class="code-copy" type="button">复制</button></div>
-  <pre><code class="hljs language-axapta"><span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span> = a + b;
-
-<span class="hljs-keyword">return</span> <span class="hljs-keyword">sum</span>; </code></pre>
+  <pre><code class="hljs language-axapta"><span class="hljs-built_in">int</span> add(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b) {
+<span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span> = a + b;
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">sum</span>; 
+}</code></pre>
 </div>
-<p>}</p>
 <p>返回值（int）：我准备给你端出一个整数
 · 函数名（add）
 · 参数（int a, int b）
 · 大括号里的：我先把 a 和 b 加起来变成 sum，然后 return sum（把算好的 sum 端出去给你）</p>
 <p>（1）只有函数头，末尾必须加分号；C语言是自上而下编译的。编译器在遇到函数调用时，必须提前知道函数的返回类型、参数类型和个数，才能分配正确的内存并生成指令。声明就是为了给编译器吃“定心丸”。
 eg<code>int add(int a, int b);</code>，可以声明无数次。</p>
-<p>注：eg：int add(int a, int b) {    // &lt;--- 这部分就是【函数头】</p>
 <div class="code-block">
   <div class="code-head"><span class="code-lang">axapta</span><button class="code-copy" type="button">复制</button></div>
-  <pre><code class="hljs language-axapta"><span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span> = a + b;       <span class="hljs-comment">// &lt;--- 这部分就是【函数体】</span>
-
-<span class="hljs-keyword">return</span> <span class="hljs-keyword">sum</span>;            <span class="hljs-comment">// &lt;--- 这部分也是【函数体】</span></code></pre>
+  <pre><code class="hljs language-axapta">  <span class="hljs-built_in">int</span> add(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b) {    <span class="hljs-comment">// &lt;--- 这部分就是【函数头】</span>
+  <span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span> = a + b;       <span class="hljs-comment">// &lt;--- 这部分就是【函数体】</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">sum</span>;            <span class="hljs-comment">// &lt;--- 这部分也是【函数体】</span>
+  }                          <span class="hljs-comment">// &lt;--- 大括号结束</span></code></pre>
 </div>
-<p>}                          // &lt;--- 大括号结束</p>
 <p>函数头：int add(int a, int b)。它包含了三个核心信息：返回类型（int）、函数名（add）、参数列表（int a, int b）。
 函数体：大括号 { } 以及里面的所有代码。它是函数真正执行动作的地方。</p>
 <h3 id="3-语法细节与踩坑">3. 语法细节与踩坑<a class="heading-anchor" href="#3-%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E4%B8%8E%E8%B8%A9%E5%9D%91" aria-label="链接到此标题">#</a></h3>
