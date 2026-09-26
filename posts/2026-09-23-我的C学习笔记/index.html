@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>3 分钟阅读</span>
+        <span>5 分钟阅读</span>
         
       </div>
     </header>
@@ -96,8 +96,74 @@ eg<code>int add(int a, int b);</code>，可以声明无数次。</p>
 函数体：大括号 { } 以及里面的所有代码。它是函数真正执行动作的地方。</p>
 <p>b.函数定义：函数头加函数体</p>
 <p>###3.变量</p>
+<p>变量时程序可操作的储存区的名称</p>
+<p>a.条件：变量的名称可以由字母，数字和下划线字符组成 ❤️它必须以字母或下划线开头 大写字母和小写字母是不同的</p>
+<p>b.类型：char:通常是一个字节（八位），这是一个整数类型（存放“单个符号”） eg：char letter = &#39;A&#39; A在ASCII码表中对应的数字是65 想打印成字符（字母）：用%c。想打印成数字（ASCII码）：用%d</p>
+<p>   char letter = &#39;A&#39;;</p>
+<p>   printf(&quot;字符是：%c\n&quot;, letter); // 输出：A</p>
+<p>   printf(&quot;对应的数字是：%d\n&quot;, letter); // 输出：65</p>
+<p>int：整型，4个字节，取值范围-2147483648到2147483647 eg：int age = 18 打印用%d</p>
+<p>  int a = 10;</p>
+<p>  printf(&quot;数字是：%d\n&quot;, a); // 输出：数字是：10</p>
+<p>float：单精度浮点值（小数）。大概能保留小数点后6到7位的有效数字(%f)</p>
+<p>double：双精度浮点值。能保留小数点后大概15到16位有效数字(%f)</p>
+<p>void：表示类型的缺失</p>
+<p>c.变量定义：告诉编译器在何处创建变量的存储，以及如何创建变量的存储</p>
+<p>变量定义指定一个数据类型，并包含了该类型的一个或多个变量的列表</p>
+<p>格式：type variable_list;</p>
+<p>eg:int age; (age被定义为一个整型变量</p>
+<p>d.变量初始化</p>
+<p>格式：type variable_name = value;(值）</p>
+<p>eg：int x = 10</p>
+<p>后续初始化变量：eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">gml</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-gml">      int <span class="hljs-variable language_">x</span>；
+      <span class="hljs-variable language_">x</span> = <span class="hljs-number">20</span>；</code></pre>
+</div>
+<p>**   以下是不同类型的变量在没有显式初始化时的默认值：</p>
+<p>整型变量（int、short、long等）：默认值为0。</p>
+<p>浮点型变量（float、double等）：默认值为0.0。</p>
+<p>字符型变量（char）：默认值为&#39;\0&#39;，即空字符。</p>
+<p>指针变量：默认值为NULL，表示指针不指向任何有效的内存地址。</p>
+<p>数组、结构体、联合等复合类型的变量：它们的元素或成员将按照相应的规则进行默认初始化，这可能包括对元素递归应用默认规则。**</p>
+<p>🔴总结起来，C 语言中变量的默认值取决于其类型和作用域。全局变量和静态变量的默认值为 0，字符型变量的默认值为 \0，指针变量的默认值为 NULL，而局部变量没有默认值，其初始值是未定义的。</p>
+<p>e.变量的声明</p>
+<p>变量的声明有两种情况：</p>
+<p>1、一种是需要建立存储空间的。例如：int a 在声明的时候就已经建立了存储空间。</p>
+<p>2、另一种是不需要建立存储空间的，通过使用extern关键字声明变量名而不定义它。 例如：extern int a 其中变量 a 可以在别的文件中定义的。</p>
+<p>（除非有 extern 关键字，否则都是变量的定义）</p>
+<p>  extern int i; //声明，不是定义</p>
+<p>  int i; //声明，也是定义</p>
+<p>  eg:</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-comment">// 函数外定义变量 x 和 y</span>
+<span class="hljs-type">int</span> x;
+<span class="hljs-type">int</span> y;
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">addtwonum</span><span class="hljs-params">()</span>
+</span>{
+<span class="hljs-comment">// 函数内声明变量 x 和 y 为外部变量</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> x;
+<span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> y;
+<span class="hljs-comment">// 给外部变量（全局变量）x 和 y 赋值</span>
+x = <span class="hljs-number">1</span>;
+y = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">return</span> x+y;
+}
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+<span class="hljs-type">int</span> result;
+<span class="hljs-comment">// 调用函数 addtwonum</span>
+result = <span class="hljs-built_in">addtwonum</span>();
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;result 为: %d&quot;</span>,result);
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+</div>
 <ol start="3">
-<li>语法细节与踩坑</li>
+<li>语法细节与踩</li>
 </ol>
 <ul>
 <li>声明里的参数名可以省略：<code>int add(int, int);</code> 也是合法的。</li>
