@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>我的C学习笔记 · 我的博客</title>
-<meta name="description" content="C语言的笔记 一.C程序的主要包括 1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释 1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件 系统头文件使用尖括号&lt;&gt; 自定义头文件使用双引号“…">
+<meta name="description" content="C语言的笔记 一.C程序的主要包括 1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释 ###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件 系统头文件使用尖括号&lt;&gt; 自定义头文件使用双…">
 <meta name="author" content="IrisZ">
 <meta property="og:title" content="我的C学习笔记 · 我的博客">
-<meta property="og:description" content="C语言的笔记 一.C程序的主要包括 1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释 1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件 系统头文件使用尖括号&lt;&gt; 自定义头文件使用双引号“…">
+<meta property="og:description" content="C语言的笔记 一.C程序的主要包括 1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释 ###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件 系统头文件使用尖括号&lt;&gt; 自定义头文件使用双…">
 <meta property="og:type" content="article">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
@@ -56,22 +56,21 @@
         <p class="toc-title">目录</p>
         <ul>
           <li class="toc-h2"><a href="#%E4%B8%80c%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC">一.C程序的主要包括</a></li>
-          <li class="toc-h3"><a href="#3-%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E4%B8%8E%E8%B8%A9%E5%9D%91">3. 语法细节与踩坑</a></li>
-          <li class="toc-h3"><a href="#4-%E5%AE%9E%E9%99%85%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%BF%90%E7%94%A8">4. 实际工程中的运用</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
 <h1 id="c语言的笔记">C语言的笔记<a class="heading-anchor" href="#c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AC%94%E8%AE%B0" aria-label="链接到此标题">#</a></h1>
 <h2 id="一c程序的主要包括">一.C程序的主要包括<a class="heading-anchor" href="#%E4%B8%80c%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC" aria-label="链接到此标题">#</a></h2>
 <p><strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
-<p>1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
+<p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
 <p>系统头文件使用尖括号&lt;&gt; 自定义头文件使用双引号“”  头文件定义了函数，宏，常量等是程序能够使用预定义的库函数
 eg:#include&lt;stdio.h&gt;(系统头文件） #include“myheader.h&quot;(自定义头文件）</p>
 <p>b.宏：形式一般在程序第二行 eg:#define PI 3.14  在预处理阶段时所有的PI都变成3.14</p>
 <p>宏的两种类型 1.对象宏（常量宏）就是给值起了一个外号 2.函数宏（带参数的宏） 它能像函数一样接收参数，但绝不是函数 eg：#define SQUARE(×） × * × 当你写SQUARE（5）时，它会替换成5 * 5</p>
 <p>常见陷阱：写成1+2这种时要加括号 不加括号就变成1+2<em>1+2变成1+2+2 正确写法：#define SQUARE（×）（（×）</em> (×））</p>
 <p>注：stdio是standard input output .header （标准输入输出头文件） C的功能都在标准库里，所以要在第一行写预处理器指令</p>
-<p>2.在C语言中，函数由一个函数头和一个函数主体组成</p>
+<p>###函数</p>
+<p>在C语言中，函数由一个函数头和一个函数主体组成</p>
 <p>a.函数声明:告诉编译器函数的名称，返回类型和参数，他让编译器在遇到函数调用时，知道该如何处理，而不必立刻知道函数的具体实现。</p>
 <div class="code-block">
   <div class="code-head"><span class="code-lang">axapta</span><button class="code-copy" type="button">复制</button></div>
@@ -96,15 +95,20 @@ eg<code>int add(int a, int b);</code>，可以声明无数次。</p>
 <p>函数头：int add(int a, int b)。它包含了三个核心信息：返回类型（int）、函数名（add）、参数列表（int a, int b）。
 函数体：大括号 { } 以及里面的所有代码。它是函数真正执行动作的地方。</p>
 <p>b.函数定义：函数头加函数体</p>
-<h3 id="3-语法细节与踩坑">3. 语法细节与踩坑<a class="heading-anchor" href="#3-%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E4%B8%8E%E8%B8%A9%E5%9D%91" aria-label="链接到此标题">#</a></h3>
+<p>###3.变量</p>
+<ol start="3">
+<li>语法细节与踩坑</li>
+</ol>
 <ul>
 <li>声明里的参数名可以省略：<code>int add(int, int);</code> 也是合法的。</li>
 <li>声明末尾的分号绝对不能少，否则会引发诡异的语法错误。</li>
 <li>如果函数不接受任何参数，现代C语言规范要求写上 <code>void</code>：<code>int func(void);</code>，而不是留空 <code>int func();</code>。</li>
 </ul>
-<h3 id="4-实际工程中的运用">4. 实际工程中的运用<a class="heading-anchor" href="#4-%E5%AE%9E%E9%99%85%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%BF%90%E7%94%A8" aria-label="链接到此标题">#</a></h3>
-<p>在大型项目中，函数声明通常放在 <code>.h</code>（头文件）里，函数定义放在 <code>.c</code>（源文件）里。主程序通过 <code>#include &quot;xxx.h&quot;</code> 引入声明，从而实现模块化编程。
-主函数：每个C程序有且只有一个main（）函数，是程序的执行入口 程序从main()开始执行，返回值通常为0表示程序成功执行，非零值表示出现了错误</p>
+<ol start="4">
+<li>实际工程中的运用
+在大型项目中，函数声明通常放在 <code>.h</code>（头文件）里，函数定义放在 <code>.c</code>（源文件）里。主程序通过 <code>#include &quot;xxx.h&quot;</code> 引入声明，从而实现模块化编程。
+主函数：每个C程序有且只有一个main（）函数，是程序的执行入口 程序从main()开始执行，返回值通常为0表示程序成功执行，非零值表示出现了错误</li>
+</ol>
 
       </div>
     </div>
