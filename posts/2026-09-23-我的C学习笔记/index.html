@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>12 分钟阅读</span>
+        <span>13 分钟阅读</span>
         
       </div>
     </header>
@@ -60,15 +60,15 @@
       </aside>
       <div class="post-content prose">
 <h1 id="c语言的笔记">C语言的笔记<a class="heading-anchor" href="#c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AC%94%E8%AE%B0" aria-label="链接到此标题">#</a></h1>
-<p>##一.关键字
-<strong>保留字：已被C语言本身使用，不能做其他用途的字</strong></p>
+<p>##一.关键字</p>
+<p><strong>保留字：已被C语言本身使用，不能做其他用途的字</strong></p>
 <p>常见的32种：</p>
 <p>auto,break,case,char,const,continue,defauit,do</p>
 <p>double,else,enum,extern,float,for,goto,if</p>
 <p>int,long,register,return,short,signed,sizeof,static</p>
 <p>struct,switch,typedef,union,unsigned,void,volatile,while</p>
-<p>##二.标识符（给变量，函数，数组，结构体等起的名字）
-<strong>用来标识某个实体的符号</strong></p>
+<p>##二.标识符（给变量，函数，数组，结构体等起的名字）</p>
+<p><strong>用来标识某个实体的符号</strong></p>
 <p>命名及规范：</p>
 <p>1.只能由字母，数字和下划线组成，且以字母和下划线开头</p>
 <p>2.不能和关键字相同</p>
@@ -91,8 +91,8 @@
 <p>float（单精度浮点型）：4字节（能保留小数点后6-7位）</p>
 <p>double（双精度浮点数）：8字节（能保留小数点后15-16位）</p>
 <p>char（字符型）：1字节，-128~127，这是一个整数类型（存放“单个符号”） eg：char letter = &#39;A&#39; A在ASCII码表中对应的数字是65 想打印成字符（字母）：用%c。想打印成数字（ASCII码）：用%d</p>
-<p>##四.常量
-<strong>不能被修改的量</strong></p>
+<p>##四.常量</p>
+<p><strong>不能被修改的量</strong></p>
 <p>1.普通常量：数值常量，字符常量，字符串常量（常量后要加f，eg：1.23f）</p>
 <p>2.转义字符（要用\转义）
 \n(换行）</p>
@@ -100,8 +100,8 @@
 <p>\(两个反斜杠为一个）</p>
 <p>&#39;（单引号）</p>
 <p>&quot;（双引号）</p>
-<p>##五.变量
-**其值可以变化的量</p>
+<p>##五.变量</p>
+<p><strong>其值可以变化的量</strong></p>
 <p>先定义再使用</p>
 <p>定义格式：</p>
 <p>  数据类型 变量名；</p>
@@ -118,8 +118,8 @@
 <p><strong>用const修饰的量</strong></p>
 <p>定义格式：const 数据类型 变量名；（定义时必须赋值）</p>
 <p>加上const变量就不能变了，不让变量的值发生改变</p>
-<p>##六.运算符
-<strong>说明特定操作的符号</strong></p>
+<p>##六.运算符</p>
+<p><strong>说明特定操作的符号</strong></p>
 <p>分类：算术运算符，赋值运算符，关系运算符，逻辑运算符和位运算符等</p>
 <p>按修饰的操作数个数分类：单目，双目和三目运算符</p>
 <p>1.算术运算符</p>
@@ -339,7 +339,15 @@ printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;最
 c = <span class="hljs-punctuation">(</span><span class="hljs-keyword">a</span> + <span class="hljs-number">1</span>, b + <span class="hljs-number">2</span><span class="hljs-punctuation">)</span><span class="hljs-comment">; </span>
 printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;c = %d<span class="hljs-char escape_">\n</span>&quot;</span>, c<span class="hljs-punctuation">)</span><span class="hljs-comment">; // 输出 4 (因为 b=2, 2+2=4)</span></code></pre>
 </div>
-<p>🔴运算符是有优先级的</p>
+<p>🔴运算符是有优先级的，单目运算符优先级最高，可以直接加括号（）。括号的优先级是最高的。</p>
+<p>##七.语句</p>
+<p><strong>当程序运行时执行某个动作的语法结构</strong></p>
+<p>1.空语句：只有一个分号，什么也不执行</p>
+<p>2.表达式语句：在表达式的末尾加分号</p>
+<p>3.函数调用语句：由函数名，实际参数加分号组成</p>
+<p>4.复合语句：是用{}将一系列语句括起来，相当于一条语句</p>
+<p>5.控制语句：循环，选择/分支，跳转</p>
+<p>a.分支结构（做选择）：主要有if和switch                                  </p>
 <h2 id="一c程序的主要包括">一.C程序的主要包括<a class="heading-anchor" href="#%E4%B8%80c%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC" aria-label="链接到此标题">#</a></h2>
 <p><strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
 <p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
