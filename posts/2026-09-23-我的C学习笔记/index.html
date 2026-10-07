@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>13 分钟阅读</span>
+        <span>15 分钟阅读</span>
         
       </div>
     </header>
@@ -372,6 +372,101 @@ printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;c =
 	}
 	</code></pre>
 </div>
+<p>  （3）形态三：多分支（如果……否则如果……否则……）</p>
+<p>eg：<br>	
+	int score = 85;
+    if (score &gt;= 90) {
+    printf(&quot;优秀\n&quot;);
+    } else if (score &gt;= 60) {
+    printf(&quot;及格\n&quot;);  // 会执行这里
+    } else {
+    printf(&quot;不及格\n&quot;);
+    }</p>
+<p>switch语句
+	
+  当判断条件是一个具体的整数值时，用switch更清晰 </p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-type">int</span> choice = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">switch</span> (choice) {
+<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你选了1\n&quot;</span>);
+    <span class="hljs-keyword">break</span>;  <span class="hljs-comment">// 必须加 break，否则会“穿透”执行下面的 case</span>
+<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你选了2\n&quot;</span>); <span class="hljs-comment">// 执行这里</span>
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">default</span>:
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;无效选择\n&quot;</span>);
+    <span class="hljs-keyword">break</span>;
+}</code></pre>
+</div>
+<p>🔴注：每个case后一定要加break，否则代码会继续往下执行，叫“case穿透”</p>
+<p>b.循环结构</p>
+<p>（1）for循环 （最常用，适合知道循环次数） </p>
+<p>  语法 for （表达式1；表达式2；表达式3） {循环体4；}       （按照1243形式循环）</p>
+<p> eg：<br>	
+	for (int i = 0; i &lt; 5; i++) {
+    printf(&quot;%d &quot;, i);  // 输出 0 1 2 3 4
+    }  </p>
+<p>（2）while循环（适合不知道循环此时，只知道停止条件）</p>
+<p>语法：while（逻辑表达式）{循环体； }</p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">int i = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+while <span class="hljs-punctuation">(</span>i &lt; <span class="hljs-number">5</span><span class="hljs-punctuation">)</span> {
+printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%d &quot;</span>, i<span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+i++<span class="hljs-comment">;</span>
+}</code></pre>
+</div>
+<p>（3）do while语句	</p>
+<p> 先执行一次，再判断条件（哪怕条件一开始就是假，循环体也会执行一次）</p>
+<p> 语法：do {}while(逻辑表达式）；</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-type">int</span> i = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">do</span> {
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我会被执行一次\n&quot;</span>);
+i++;
+} <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">5</span>); <span class="hljs-comment">// 虽然条件一开始就是假，但循环体已经执行过一次了</span></code></pre>
+</div>
+<p>c.跳转语句 （中途变道）</p>
+<p>用来在循环或分支中强行改变执行方向</p>
+<p> （1）break （跳出当前循环或switch语句，结束循环或switch语句执行）立刻终止整个循环，不再继续）</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+<span class="hljs-keyword">if</span> (i == <span class="hljs-number">5</span>) <span class="hljs-keyword">break</span>;  <span class="hljs-regexp">//</span> 当 i 等于 <span class="hljs-number">5</span> 时，直接跳出循环
+<span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;<span class="hljs-variable">%d</span> &quot;</span>, i);   <span class="hljs-regexp">//</span> 输出 <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>
+}</code></pre>
+</div>
+<p> （2）continue （跳过本次循环，进入下一次） 不终止整个循环，只跳过当前这一循环，直接开始下一次</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl"> <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+<span class="hljs-keyword">if</span> (i == <span class="hljs-number">2</span>) <span class="hljs-keyword">continue</span>; <span class="hljs-regexp">//</span> 跳过 i=<span class="hljs-number">2</span> 的情况
+<span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;<span class="hljs-variable">%d</span> &quot;</span>, i);     <span class="hljs-regexp">//</span> 输出 <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>
+}</code></pre>
+</div>
+<p> （3）goto （无条件转移，不推荐） </p>
+<p>可以跳到代码里任意一个标签位置。因为它会破坏代码结构，让程序像一团乱麻，现代编程中强烈建议不要使用。 </p>
+<p> d.嵌套（套娃）分支和循环可以互相嵌套，比如在 for 循环里写 if，或者 for 里面再套 for。</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">for <span class="hljs-punctuation">(</span>int i = <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= 9; i++) {</span>
+for <span class="hljs-punctuation">(</span>int j = <span class="hljs-number">1</span><span class="hljs-comment">; j &lt;= i; j++) {</span>
+    printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%d*%d=%d<span class="hljs-char escape_">\t</span>&quot;</span>, j, i, i*j<span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+}
+printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;<span class="hljs-char escape_">\n</span>&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-comment">; // 每打完一行换行</span>
+}</code></pre>
+</div>
+<p>  🔴注：还是遵守1243的顺序循环，一次循环中先完成j再完成i</p>
+<p>  便于理解：</p>
+<p>  • 顺序：默认从头走到尾。
+  • 分支：if 和 switch，根据条件走岔路。
+  • 循环：for（次数明确）、while（条件明确）、do-while（至少一次）。
+  • 跳转：break（彻底不干了）、continue（这次先跳过，下次继续）。</p>
 <p>一.C程序的主要包括
 <strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
 <p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
