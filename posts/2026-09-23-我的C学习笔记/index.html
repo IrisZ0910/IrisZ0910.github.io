@@ -638,6 +638,29 @@ for （int i = <span class="hljs-number">0</span><span class="hljs-comment">; i 
 </div>
 <h2 id="九函数">九.函数<a class="heading-anchor" href="#%E4%B9%9D%E5%87%BD%E6%95%B0" aria-label="链接到此标题">#</a></h2>
 <p>  <strong>封装功能的容器</strong></p>
+<p>1.第一种 当返回值类型是空类型</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">actionscript</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-actionscript">返回值类型 函数名（）
+{
+
+  <span class="hljs-comment">//函数体</span>
+
+}
+<span class="hljs-keyword">void</span> main（）
+{
+   函数名（）；
+}</code></pre>
+</div>
+<p>空类型：void （什么都不用管）</p>
+<p>2.第二种 不是空类型时</p>
+<p> （1）返回值类型：基本数据类型</p>
+<p> （2）函数名：满足标识符</p>
+<p> （3）函数体：这个函数瑶实现的具体功能代码</p>
+<p> （4)main函数：主函数（入口函数）必须有主函数，否则程序不会执行，找不到入口 </p>
+<p>  🔴注：在我们的一个项目中，可以有多个源文件，但是只能有一个主函数。</p>
+<p>  （5）程序的执行流程：只会执行主函数main里面的代码</p>
+<p>  （6）函数的调用：把其他的函数放到主函数里</p>
 <p>一.C程序的主要包括
 <strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
 <p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
