@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>15 分钟阅读</span>
+        <span>19 分钟阅读</span>
         
       </div>
     </header>
@@ -62,6 +62,8 @@
           <li class="toc-h2"><a href="#%E4%BA%94%E5%8F%98%E9%87%8F">五.变量</a></li>
           <li class="toc-h2"><a href="#%E5%85%AD%E8%BF%90%E7%AE%97%E7%AC%A6">六.运算符</a></li>
           <li class="toc-h2"><a href="#%E4%B8%83%E8%AF%AD%E5%8F%A5">七.语句</a></li>
+          <li class="toc-h2"><a href="#%E5%85%AB%E6%95%B0%E7%BB%84">八.数组</a></li>
+          <li class="toc-h2"><a href="#%E4%B9%9D%E5%87%BD%E6%95%B0">九.函数</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -396,7 +398,7 @@ printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;c =
 <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你选了2\n&quot;</span>); <span class="hljs-comment">// 执行这里</span>
     <span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">default</span>:
+<span class="hljs-keyword">default</span>:  <span class="hljs-comment">// 相当于兜底，不符合条件时才执行的</span>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;无效选择\n&quot;</span>);
     <span class="hljs-keyword">break</span>;
 }</code></pre>
@@ -467,6 +469,175 @@ printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;<sp
   • 分支：if 和 switch，根据条件走岔路。
   • 循环：for（次数明确）、while（条件明确）、do-while（至少一次）。
   • 跳转：break（彻底不干了）、continue（这次先跳过，下次继续）。</p>
+<h2 id="八数组">八.数组<a class="heading-anchor" href="#%E5%85%AB%E6%95%B0%E7%BB%84" aria-label="链接到此标题">#</a></h2>
+<p>1.概念： 类型相同，内存连续的数据的组合  eg：int就全是int，float就全是float</p>
+<p>2.格式： 类型说明符 数组名[数组大小]</p>
+<p>3.分类：一维数组和多维数组  </p>
+<p>a.数组：</p>
+<p> 赋值格式：类型说明符 数组名[数组大小] = { 值   }    eg：int a[6] = {1,2,3,4,5,6}</p>
+<p>数组的初始化：</p>
+<p>  （1）数组没有赋值的部分，系统会自动默认为0</p>
+<p>   （2）当我们没有给数组大小的时候，那么数组的元素的个数就是这个数组的大小</p>
+<p>   （3)定义数组的时候，初始化只能少给不能多给  eg：int a[6] = {  } 花括号里面的值不能超过六个，少于六个剩下的值补0</p>
+<p>   （4）数组最大的下标为数组大小-1 （数组的值都有下标，eg：int a[6]= {1，2，3，4，5，6} 而1的下标为0，2的下标为1，3的下标为2，以此类推 所以数组的下标从0开始，访问数组的元素从0开始）</p>
+<p>  访问数组的元素：a[0] 对应1 a[1] 对应2 ……     </p>
+<p>   eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">apache</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-apache"> <span class="hljs-attribute">int</span> a[<span class="hljs-number">6</span>]= {<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>，<span class="hljs-number">5</span>，<span class="hljs-number">6</span>}
+ <span class="hljs-attribute">printf</span>（<span class="hljs-string">&quot;%d\n&quot;</span>,a[<span class="hljs-number">0</span>])   //结果为<span class="hljs-number">1</span> </code></pre>
+</div>
+<p>数组的遍历：</p>
+<p> 作用是便利输出数组所有元素</p>
+<p> （1）利用for循环：</p>
+<p> eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl"> <span class="hljs-keyword">int</span> a[<span class="hljs-number">6</span>]= {<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>，<span class="hljs-number">5</span>，<span class="hljs-number">6</span>}
+ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)
+ {
+    <span class="hljs-keyword">printf</span>(<span class="hljs-variable">%d</span>\n<span class="hljs-string">&quot;,a[i]
+ }
+ //输出结果为 ：
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6</span></code></pre>
+</div>
+<p>b.数组在内存中的存在形式</p>
+<p>  （1）内存：程序在运行的时候，用来临时存储数据的作用  （eg：计算机输入按下数字的时候，数字在内存中，按了=才会把数据给到CPU</p>
+<p>   计算机的内存被划分为无数个1字节大小的存储单元，我们可以把内存想象成一排连续的小格子（每个格子1个字节）</p>
+<p>   内存是可以释放的，当程序运行结束之后，程序就自行释放，所以多次取地址打印的结果都是不相同的</p>
+<p> （2） 地址：数据在内存中的编号</p>
+<p>   <strong>&amp;：取地址</strong></p>
+<p>  规则：64位操作系统用16进制表示（方便阅读）</p>
+<p>   地址只认第一个字节 假如我声明了int a ，当我用&amp;a取地址时，整个int变量的地址，就等于这四个字节中“起始那个字节”的地址，，打印的都是首地址</p>
+<p>  eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>；
+<span class="hljs-keyword">printf</span>（<span class="hljs-string">&quot;<span class="hljs-variable">%p</span>\n&quot;</span>,&amp;a);  <span class="hljs-regexp">//</span>注意，取地址时用占位符<span class="hljs-variable">%p</span></code></pre>
+</div>
+<p>🔴数组元素个数公式：总长度/数据类型占用的字节个数</p>
+<p>   eg：printf(&quot;数组元素个数 = %d\n&quot;,sizeof(数组名) / sizeof（随便一个数组元素表示））；</p>
+<p>c.二维数组</p>
+<p> （1）概念：由多个一维数组组成</p>
+<p>  （2）定义格式：</p>
+<p>  数据类型 数组名[行][列]  （每行每列表示元素也是都从0开始）</p>
+<p>  （3）赋值格式：</p>
+<p> eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">stylus</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-stylus">int <span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[3]</span><span class="hljs-selector-attr">[4]</span> =         <span class="hljs-comment">//元素个数为行×列 3*4 = 12  </span>
+{
+     {<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>}，
+	 {<span class="hljs-number">5</span>，<span class="hljs-number">6</span>，<span class="hljs-number">7</span>，<span class="hljs-number">8</span>}，
+	 {<span class="hljs-number">9</span>，<span class="hljs-number">10</span>，<span class="hljs-number">11</span>，<span class="hljs-number">12</span>}
+}；</code></pre>
+</div>
+<p> （4）访问元素：eg：a[0][1] </p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns"> printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%d<span class="hljs-char escape_">\n</span>&quot;</span>,<span class="hljs-keyword">a</span>[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]<span class="hljs-punctuation">)</span><span class="hljs-comment">;  //输出结果为2</span></code></pre>
+</div>
+<p>  （5）遍历：</p>
+<p>用for循环嵌套</p>
+<p>  eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">int <span class="hljs-keyword">a</span>[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] =          
+{    
+ {<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>}，		
+ {<span class="hljs-number">5</span>，<span class="hljs-number">6</span>，<span class="hljs-number">7</span>，<span class="hljs-number">8</span>}，		
+ {<span class="hljs-number">9</span>，<span class="hljs-number">10</span>，<span class="hljs-number">11</span>，<span class="hljs-number">12</span>}    
+}；  
+for （int i = <span class="hljs-number">0</span><span class="hljs-comment">; i &lt; 3; i++)</span>
+{
+   printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;<span class="hljs-char escape_">\n</span>&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+   for<span class="hljs-punctuation">(</span>int j = <span class="hljs-number">0</span><span class="hljs-comment">; j &lt; 4；j++);</span>
+  {
+    printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%d &quot;</span>,<span class="hljs-keyword">a</span>[i][j]<span class="hljs-punctuation">)</span>
+  }
+}<span class="hljs-comment">;</span>
+//输出结果为 <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>
+            <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span>
+			<span class="hljs-number">9</span> <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span></code></pre>
+</div>
+<p> d.三维数组</p>
+<p>  （1）概念：由多个二维数组组成</p>
+<p>   （2）定义格式： 数组类型 数组名 [层][行][列]</p>
+<p>   （3）赋值：eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dust</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dust"><span class="language-xml">  int a[3][3][3]=
+  </span><span class="hljs-template-variable">{
+     {
+        {1,2,3}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{1,2,3}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{1,2,3}</span><span class="language-xml">,
+     },
+	 </span><span class="hljs-template-variable">{
+        {3,2,1}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{3,2,1}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{3,2,1}</span><span class="language-xml">,
+	 },
+	 </span><span class="hljs-template-variable">{
+	    {0,0,0}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{0,0,0}</span><span class="language-xml">,
+		</span><span class="hljs-template-variable">{0,0,0}</span><span class="language-xml">
+	 }
+  };
+  //想象成多个二维数组组成的一个正方形</span></code></pre>
+</div>
+<p>   （4）访问元素：a[][][]</p>
+<p>   (5)遍历</p>
+<p>   eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl"><span class="hljs-keyword">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>][<span class="hljs-number">3</span>]=	
+{	
+ {    
+    {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},			
+    {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},			
+    {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},    
+  },		
+  {    
+    {<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>},			
+    {<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>},			
+    {<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>},		
+ },		
+ {		
+    {<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>},			
+    {<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>},			
+    {<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>}		
+ }	
+};
+<span class="hljs-keyword">for</span> （<span class="hljs-keyword">int</span> C = <span class="hljs-number">0</span>；C &lt; <span class="hljs-number">3</span>; C++）
+{
+   <span class="hljs-keyword">for</span>（<span class="hljs-keyword">int</span> H = <span class="hljs-number">0</span>；H &lt; <span class="hljs-number">3</span>; H++）
+   {
+      <span class="hljs-keyword">for</span>{<span class="hljs-keyword">int</span> L = <span class="hljs-number">0</span>; L &lt; <span class="hljs-number">3</span>; L++)
+      {
+	    <span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;<span class="hljs-variable">%d</span> &quot;</span>.a[C][H][L])；
+	  }
+        <span class="hljs-keyword">printf</span>（<span class="hljs-string">&quot;\n&quot;</span>）
+   }
+}：
+//输出结果为：
+    <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+	<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+	<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+	<span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span>
+	<span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span>
+	<span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span>
+	<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>
+	<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>
+	<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span></code></pre>
+</div>
+<h2 id="九函数">九.函数<a class="heading-anchor" href="#%E4%B9%9D%E5%87%BD%E6%95%B0" aria-label="链接到此标题">#</a></h2>
+<p>  <strong>封装功能的容器</strong></p>
 <p>一.C程序的主要包括
 <strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
 <p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
