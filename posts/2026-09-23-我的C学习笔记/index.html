@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>19 分钟阅读</span>
+        <span>21 分钟阅读</span>
         
       </div>
     </header>
@@ -640,20 +640,83 @@ for （int i = <span class="hljs-number">0</span><span class="hljs-comment">; i 
 <p>  <strong>封装功能的容器</strong></p>
 <p>1.第一种 当返回值类型是空类型</p>
 <div class="code-block">
-  <div class="code-head"><span class="code-lang">actionscript</span><button class="code-copy" type="button">复制</button></div>
-  <pre><code class="hljs language-actionscript">返回值类型 函数名（）
+  <div class="code-head"><span class="code-lang">angelscript</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-angelscript"><span class="hljs-built_in">void</span> 函数名（形参列表）
 {
 
   <span class="hljs-comment">//函数体</span>
 
 }
-<span class="hljs-keyword">void</span> main（）
+<span class="hljs-built_in">int</span> main（）
 {
    函数名（）；
 }</code></pre>
 </div>
-<p>空类型：void （什么都不用管）</p>
-<p>2.第二种 不是空类型时</p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printadd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span>
+</span>{
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b); 
+}
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+<span class="hljs-built_in">printadd</span>(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>); 
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+</div>
+<p>🔴空类型特点：</p>
+<ol>
+<li><p>void 关键字：必须写在函数名前面。</p>
+</li>
+<li><p>没有返回值：调用这个函数时，不能把它赋值给变量，也不能写在 printf 里当参数。</p>
+</li>
+<li><p>return 用法：可以省略不写；如果中途想退出，只能写 return;（不能跟具体数值）。</p>
+</li>
+</ol>
+<p>2.第二种 当返回值类型不是空类型</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">ruby</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-ruby">返回值类型 函数名(形参列表) {
+<span class="hljs-regexp">//</span> 函数体
+<span class="hljs-keyword">return</span> 具体数值; <span class="hljs-regexp">//</span> 必须有 <span class="hljs-keyword">return</span>，且类型要匹配
+}</code></pre>
+</div>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-comment">// 1. 定义函数（注意最前面的 int）</span>
+<span class="hljs-comment">// int 明确告诉编译器：“我执行完后，会交回一个整数”</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{
+<span class="hljs-type">int</span> sum = a + b;
+<span class="hljs-keyword">return</span> sum; <span class="hljs-comment">// 用 return 把计算结果“交”回去</span>
+}
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-comment">// 2. 调用函数</span>
+<span class="hljs-comment">// 因为函数会“交货”，所以你必须要拿一个“容器”（变量）去接住它！</span>
+<span class="hljs-type">int</span> result = <span class="hljs-built_in">add</span>(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>); 
+
+<span class="hljs-comment">// 把接住的结果打印出来</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;结果是：%d\n&quot;</span>, result);
+
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+</div>
+<p> 🔴特点：</p>
+<ol>
+<li><p>返回值类型：必须是具体的数据类型，比如 int、float、char 等。不能是 void。</p>
+</li>
+<li><p>必须有 return 语句：函数执行到 return 时，会结束函数，并把数值返回。</p>
+</li>
+<li><p>类型必须匹配：return 后面的数据类型，必须和函数名前面的类型一致。</p>
+</li>
+</ol>
 <p> （1）返回值类型：基本数据类型</p>
 <p> （2）函数名：满足标识符</p>
 <p> （3）函数体：这个函数瑶实现的具体功能代码</p>
@@ -661,6 +724,30 @@ for （int i = <span class="hljs-number">0</span><span class="hljs-comment">; i 
 <p>  🔴注：在我们的一个项目中，可以有多个源文件，但是只能有一个主函数。</p>
 <p>  （5）程序的执行流程：只会执行主函数main里面的代码</p>
 <p>  （6）函数的调用：把其他的函数放到主函数里</p>
+<p>  （7) 形参列表 ：接收材料去干活</p>
+<p>a.函数声明:告诉编译器函数的名称，返回类型和参数，他让编译器在遇到函数调用时，知道该如何处理，而不必立刻知道函数的具体实现。</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">axapta</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-axapta"> <span class="hljs-built_in">int</span> add(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b) {    
+ 
+ <span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span> = a + b;    
+ 
+ <span class="hljs-keyword">return</span> <span class="hljs-keyword">sum</span>;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+	</code></pre>
+</div>
 <p>一.C程序的主要包括
 <strong>1.预处理器指令 2.函数 3.变量 4.语句 表达式 5.注释</strong></p>
 <p>###1.a.预处理器指令：#include&lt;stdio.h&gt; 在程序的第一行，告诉C编译器在实际编译之前要包含stdio.h头文件</p>
