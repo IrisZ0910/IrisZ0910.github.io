@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>py的学习笔记 · 我的博客</title>
-<meta name="description" content="IrisZ 的个人博客，记录学习、折腾与生活。">
+<meta name="description" content="一.python 是强类型的动态脚本语言 是一种面向对象的解释型高级编程语言 二.出现的常见四种bug： 1.中文符号（必须英文模式下） 2.缩进错误(四个空格)（print 顶格写) 3.无效语法（一个print必须单独写一行)遇到syntax说明语法有问题 4.命名错误(中英…">
 <meta name="author" content="IrisZ">
 <meta property="og:title" content="py的学习笔记 · 我的博客">
-<meta property="og:description" content="IrisZ 的个人博客，记录学习、折腾与生活。">
+<meta property="og:description" content="一.python 是强类型的动态脚本语言 是一种面向对象的解释型高级编程语言 二.出现的常见四种bug： 1.中文符号（必须英文模式下） 2.缩进错误(四个空格)（print 顶格写) 3.无效语法（一个print必须单独写一行)遇到syntax说明语法有问题 4.命名错误(中英…">
 <meta property="og:type" content="article">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
@@ -45,14 +45,124 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">py的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-10T02:29:00+08:00">2026-10-10 02:29</time>
+        <time datetime="2026-10-10T03:56:00+08:00">2026-10-10 03:56</time>
         <span class="meta-dot"></span>
-        <span>1 分钟阅读</span>
+        <span>4 分钟阅读</span>
         
       </div>
     </header>
-    <div class="post-layout">
+    <div class="post-layout has-toc">
+      <aside class="toc" aria-label="目录">
+        <p class="toc-title">目录</p>
+        <ul>
+          <li class="toc-h2"><a href="#%E4%B8%80python">一.python</a></li>
+          <li class="toc-h2"><a href="#%E4%BA%8C%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8Dbug%EF%BC%9A">二.出现的常见四种bug：</a></li>
+          <li class="toc-h2"><a href="#%E4%B8%89debug%E4%B8%AD">三.debug中</a></li>
+          <li class="toc-h2"><a href="#%E5%9B%9B%E6%B3%A8%E9%87%8A">四.注释.</a></li>
+          <li class="toc-h2"><a href="#%E4%BA%94%E5%BF%AB%E6%8D%B7%E9%94%AE">五.快捷键</a></li>
+          <li class="toc-h2"><a href="#%E5%85%AD%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0print%EF%BC%88%EF%BC%89">六.输出函数print（）</a></li>
+          <li class="toc-h2"><a href="#%E4%B8%83%E5%8F%98%E9%87%8F">七.变量</a></li>
+          <li class="toc-h2"><a href="#%E5%85%AB%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B">八.数值类型</a></li>
+          <li class="toc-h2"><a href="#%E4%B9%9D%E5%AD%97%E7%AC%A6%E4%B8%B2str">九.字符串str</a></li>
+          <li class="toc-h2"><a href="#%E5%8D%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA">十.格式化输出</a></li>
+        </ul>
+      </aside>
       <div class="post-content prose">
+<h2 id="一python">一.python<a class="heading-anchor" href="#%E4%B8%80python" aria-label="链接到此标题">#</a></h2>
+<p>是强类型的动态脚本语言</p>
+<p>是一种面向对象的解释型高级编程语言</p>
+<h2 id="二出现的常见四种bug：">二.出现的常见四种bug：<a class="heading-anchor" href="#%E4%BA%8C%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8Dbug%EF%BC%9A" aria-label="链接到此标题">#</a></h2>
+<p>1.中文符号（必须英文模式下）</p>
+<p>2.缩进错误(四个空格)（print 顶格写)</p>
+<p>3.无效语法（一个print必须单独写一行)遇到syntax说明语法有问题</p>
+<p>4.命名错误(中英文必须加引号单双都可以，数字不加引号)</p>
+<h2 id="三debug中">三.debug中<a class="heading-anchor" href="#%E4%B8%89debug%E4%B8%AD" aria-label="链接到此标题">#</a></h2>
+<p>1.代码为蓝色时，代表即将要运行</p>
+<p>2.step out(跳到下一个断点)</p>
+<h2 id="四注释">四.注释.<a class="heading-anchor" href="#%E5%9B%9B%E6%B3%A8%E9%87%8A" aria-label="链接到此标题">#</a></h2>
+<p>单行注释:用#井号，放在代码前后都可，但注释右边不可被执行，起辅助说明作用。</p>
+<p>多行注释:用三对引号包含，单双都可以，注释内容也不会被执行</p>
+<h2 id="五快捷键">五.快捷键<a class="heading-anchor" href="#%E4%BA%94%E5%BF%AB%E6%8D%B7%E9%94%AE" aria-label="链接到此标题">#</a></h2>
+<p>1.ctrl+/单行注释，既可添加，也可取消注释</p>
+<p>2.ctrl+Z 撤销上一步操作</p>
+<p>3.+C复制</p>
+<p>4.+V粘贴</p>
+<p>5.+F查找</p>
+<p>6.+D复制到下一行</p>
+<h2 id="六输出函数print（）">六.输出函数print（）<a class="heading-anchor" href="#%E5%85%AD%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0print%EF%BC%88%EF%BC%89" aria-label="链接到此标题">#</a></h2>
+<p>1.输出多个值或多句话，需要用，隔开（英文模式下）eg：print(“哈哈哈”，“嘻嘻嘻”，“呵呵呵”)效果为用空格隔开</p>
+<p>2.sep，使用sep间隔多个值eg:print(“哈哈哈”,”嘻嘻嘻”，”呵呵呵”,sep=“,”) </p>
+<p>3.end，使用end用来拼接两个运行的字符</p>
+<p>print（“字符串”，end =“后面拼接的值”)   最后输出结果:第一个print中的字符串+后面拼接的值+第二个print中的字符串 </p>
+<h2 id="七变量">七.变量<a class="heading-anchor" href="#%E4%B8%83%E5%8F%98%E9%87%8F" aria-label="链接到此标题">#</a></h2>
+<p>1.概念:一个容器，计算机当中的储存空间</p>
+<p>2.作用:在计算机内存中保存数据</p>
+<p>3.定义变量的格式:变量名 = 值(=是赋值运算符左右两边打上空格是为了代码的规范性，美观性)</p>
+<p>（加上引号会打印引号的内容，不加引号就是变量名，打印的是变量的值）</p>
+<p>（变量只有被赋值之后才会被创建，使用变量之前要先赋值）值:英文和汉字时都要加引号</p>
+<p>🔴一个变量可以反复赋多个值，首次使用变量会在内存中划分空间，并初始化值。再次使用这个变量不再划分空间，修改原空间的值！</p>
+<p>（代码是从上往下运行的）</p>
+<p>绝对不能以数字作为开头</p>
+<p>5.变量的命名规范</p>
+<p> a.见名知宜 eg:name = &quot;yaoyao&quot;</p>
+<p> b.下划线分割法(python常用)</p>
+<p> 多个单词组成的名称，使用小写字母，单词与单词之间使用下划线分开</p>
+<p> c.大驼峰命名法</p>
+<p> 多个单词组成的名称，每个单词的首字母大写，其余字母小写</p>
+<p> d.小驼峰命名法</p>
+<p> 多个单词组成的名称，第一个单词都小写，后面的单词首字母都大写</p>
+<h2 id="八数值类型">八.数值类型<a class="heading-anchor" href="#%E5%85%AB%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B" aria-label="链接到此标题">#</a></h2>
+<p>1.int 整型（任意大小的整数)</p>
+<p>2.float浮点型 （小数）</p>
+<p>3.bool布尔型(重点)</p>
+<p> a.有固定写法，一个为Ture(真)，一个为False(假)(必须严格区分大小写）</p>
+<p> b.布尔值可以当作整数对待，Ture相当于整数1，False相当于整数0 eg:</p>
+<p> 4.complex复数型（了解)
+ 固定写法 eg:z = a+bj     （a为实部，b为虚部，j是虚数单位） 如图所</p>
+<p> 🔴检测数据类型的方法:print(type(…))   eg:</p>
+<h2 id="九字符串str">九.字符串str<a class="heading-anchor" href="#%E4%B9%9D%E5%AD%97%E7%AC%A6%E4%B8%B2str" aria-label="链接到此标题">#</a></h2>
+<p>1.特点:需要加上引号，单双都可以。包含了多行内容时也可以使用三引号</p>
+<p>eg:name = &quot;yaoyao&quot;</p>
+<h2 id="十格式化输出">十.格式化输出<a class="heading-anchor" href="#%E5%8D%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA" aria-label="链接到此标题">#</a></h2>
+<p>1.占位符</p>
+<p>定义:生成一定格式的字符串</p>
+<p>a.%s 字符串（常用）</p>
+<p>eg:name &quot;yaoyao”</p>
+<p>print(&quot;我的名字: %s&quot;%name)</p>
+<p>效果:我的名字:yaoyao</p>
+<p>b.(1).%d 整数（常用）</p>
+<p> eg:age:18 </p>
+<p>name:yaoyao</p>
+<p>print(“我的名字:%s,年龄:%d %(name,age))</p>
+<p>效果:我的名字:yaoyao,年龄:18</p>
+<p>  (2).%4d 整数</p>
+<p>数字设定位数，不足前面补空白</p>
+<p>eg:</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns"><span class="hljs-keyword">a</span> = <span class="hljs-number">123</span>
+print<span class="hljs-punctuation">(</span>“%<span class="hljs-number">4d</span>”%<span class="hljs-keyword">a</span><span class="hljs-punctuation">)</span>   <span class="hljs-punctuation">(</span><span class="hljs-number">4</span>表示位数为<span class="hljs-number">4</span><span class="hljs-punctuation">)</span>
+效果: <span class="hljs-number">123</span><span class="hljs-punctuation">(</span>一个空格+<span class="hljs-number">123</span>一共<span class="hljs-number">4</span>位）</code></pre>
+</div>
+<p>  (3).eg:%04d 在数字1前再设个数字2，不足的话在前面补数字2，设定位数不足变量值，原样输出</p>
+<p>eg:</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">print<span class="hljs-punctuation">(</span>%<span class="hljs-number">04d</span>”%<span class="hljs-keyword">a</span><span class="hljs-punctuation">)</span>
+效果:<span class="hljs-number">0123</span></code></pre>
+</div>
+<p>  (4).%f 浮点数(常用)</p>
+<p>  eg:</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns"><span class="hljs-keyword">a</span> = <span class="hljs-number">1</span>.<span class="hljs-number">23</span>
+print<span class="hljs-punctuation">(</span>“%f”%<span class="hljs-keyword">a</span><span class="hljs-punctuation">)</span>
+效果:<span class="hljs-number">1</span>.<span class="hljs-number">230000</span>    <span class="hljs-punctuation">(</span>默认后六位小数）</code></pre>
+</div>
+<p>  如果赋值为1.2345678,遵循四舍五入</p>
+<p>   效果:1.234568</p>
+<p> (5).f前加数字，是一整个的位数 （与整数一样）</p>
+<p>  f前加.数字，是小数点后的位数   (同样遵循四舍五入)具体如下:</p>
 
       </div>
     </div>

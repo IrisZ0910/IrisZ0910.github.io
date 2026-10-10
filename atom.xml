@@ -5,14 +5,14 @@
   <link href="https://irisz0910.github.io/atom.xml" rel="self"/>
   <link href="https://irisz0910.github.io/"/>
   <id>https://irisz0910.github.io/</id>
-  <updated>2026-10-10T02:29:00+08:00</updated>
+  <updated>2026-10-10T03:56:00+08:00</updated>
   <author><name>IrisZ</name></author>
   <entry>
     <title type="html">py的学习笔记</title>
     <link href="https://irisz0910.github.io/posts/py%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://irisz0910.github.io/posts/py%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <updated>2026-10-10T02:29:00+08:00</updated>
-    <summary type="html"></summary>
+    <updated>2026-10-10T03:56:00+08:00</updated>
+    <summary type="html">一.python 是强类型的动态脚本语言 是一种面向对象的解释型高级编程语言 二.出现的常见四种bug： 1.中文符号（必须英文模式下） 2.缩进错误(四个空格)（print 顶格写) 3.无效语法（一个print必须单独写一行)遇到syntax说明语法有问题 4.命名错误(中英…</summary>
   </entry>
   <entry>
     <title type="html">我的C学习笔记</title>
