@@ -45,7 +45,7 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">py的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-10T03:56:00+08:00">2026-10-10 03:56</time>
+        <time datetime="2026-10-14T11:22:00+08:00">2026-10-14 11:22</time>
         <span class="meta-dot"></span>
         <span>4 分钟阅读</span>
         
@@ -65,6 +65,8 @@
           <li class="toc-h2"><a href="#%E5%85%AB%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B">八.数值类型</a></li>
           <li class="toc-h2"><a href="#%E4%B9%9D%E5%AD%97%E7%AC%A6%E4%B8%B2str">九.字符串str</a></li>
           <li class="toc-h2"><a href="#%E5%8D%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA">十.格式化输出</a></li>
+          <li class="toc-h2"><a href="#%E5%8D%81%E4%B8%80%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6">十一.算数运算符</a></li>
+          <li class="toc-h2"><a href="#%E5%8D%81%E4%BA%8C%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">十二.赋值运算符</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -163,6 +165,29 @@ print<span class="hljs-punctuation">(</span>“%f”%<span class="hljs-keyword">
 <p>   效果:1.234568</p>
 <p> (5).f前加数字，是一整个的位数 （与整数一样）</p>
 <p>  f前加.数字，是小数点后的位数   (同样遵循四舍五入)具体如下:</p>
+<p> （6）.%%：两个%%为一个</p>
+<p> 当有%%时要加（）</p>
+<p> eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">mel</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-mel"> <span class="hljs-keyword">print</span>（”我是%%的<span class="hljs-number">1</span>%%“%（））</code></pre>
+</div>
+<p>  2.f格式化(最常用)</p>
+<p>  格式：f&quot;{表达式}&quot;</p>
+<p>  eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">abnf</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-abnf">  name <span class="hljs-operator">=</span> ”bingbing“
+  age <span class="hljs-operator">=</span> <span class="hljs-number">18</span>
+  print(<span class="hljs-string">&quot;f{name},{age}&quot;</span>)</code></pre>
+</div>
+<h2 id="十一算数运算符">十一.算数运算符<a class="heading-anchor" href="#%E5%8D%81%E4%B8%80%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6" aria-label="链接到此标题">#</a></h2>
+<p> 1.除/：商一定为浮点数</p>
+<p> 2.整除//：商只取整数，当除数有浮点数时，商也为浮点数</p>
+<p> 3.%：商只取余数</p>
+<p> 4.<strong>幂：m</strong>n：m的n次方</p>
+<p> 优先级：幂（最高优先级）》乘，除，取余，取整数&gt;加减</p>
+<h2 id="十二赋值运算符">十二.赋值运算符<a class="heading-anchor" href="#%E5%8D%81%E4%BA%8C%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6" aria-label="链接到此标题">#</a></h2>
 
       </div>
     </div>

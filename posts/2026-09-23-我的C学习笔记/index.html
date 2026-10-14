@@ -97,7 +97,7 @@
 <p>long（长整型）：4字节，同上</p>
 <p>2.浮点数（%f）和字符型（%c）</p>
 <p>float（单精度浮点型）：4字节（能保留小数点后6-7位）</p>
-<p>double（双精度浮点数）：8字节（能保留小数点后15-16位）</p>
+<p>double（双精度浮点数）：8字节（能保留小数点后15-16位）🔴当用double时，输入占位符要用%lf 小写L加f</p>
 <p>char（字符型）：1字节，-128~127，这是一个整数类型（存放“单个符号”） eg：char letter = &#39;A&#39; A在ASCII码表中对应的数字是65 想打印成字符（字母）：用%c。想打印成数字（ASCII码）：用%d</p>
 <h2 id="四常量">四.常量<a class="heading-anchor" href="#%E5%9B%9B%E5%B8%B8%E9%87%8F" aria-label="链接到此标题">#</a></h2>
 <p><strong>不能被修改的量</strong></p>
@@ -314,7 +314,7 @@ int b = <span class="hljs-keyword">a</span>++<span class="hljs-comment">; </span
 <li>sizeof 运算符（求字节数）</li>
 </ol>
 <p>  • 作用：计算一个数据类型或变量在内存中占用的字节数。</p>
-<p>  • 特点：它是个单目运算符，不是函数。返回值类型是 size_t（无符号整数），所以打印时最好用 %zu。</p>
+<p>  • 特点：它是个单目运算符，不是函数。返回值类型是 size_t（无符号整数），所以打印时最好用 %zu。当用%d时，要在前面加上（int）eg：（int）sizeof（）</p>
 <p>  • 例子：</p>
 <div class="code-block">
   <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
