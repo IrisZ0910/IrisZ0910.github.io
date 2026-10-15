@@ -47,7 +47,7 @@
       <div class="post-meta">
         <time datetime="2026-09-23T00:00:00+08:00">2026-09-23</time>
         <span class="meta-dot"></span>
-        <span>21 分钟阅读</span>
+        <span>22 分钟阅读</span>
         
       </div>
     </header>
@@ -97,7 +97,7 @@
 <p>long（长整型）：4字节，同上</p>
 <p>2.浮点数（%f）和字符型（%c）</p>
 <p>float（单精度浮点型）：4字节（能保留小数点后6-7位）</p>
-<p>double（双精度浮点数）：8字节（能保留小数点后15-16位）🔴当用double时，输入占位符要用%lf 小写L加f</p>
+<p>double（双精度浮点数）：8字节（能保留小数点后15-16位）🔴当用double时，输入占位符要用%lf 小写L加f，不想让后面有多余的0时，打印时用%g</p>
 <p>char（字符型）：1字节，-128~127，这是一个整数类型（存放“单个符号”） eg：char letter = &#39;A&#39; A在ASCII码表中对应的数字是65 想打印成字符（字母）：用%c。想打印成数字（ASCII码）：用%d</p>
 <h2 id="四常量">四.常量<a class="heading-anchor" href="#%E5%9B%9B%E5%B8%B8%E9%87%8F" aria-label="链接到此标题">#</a></h2>
 <p><strong>不能被修改的量</strong></p>
@@ -153,6 +153,38 @@
 int b = <span class="hljs-keyword">a</span>++<span class="hljs-comment">; </span>
 // 步骤：先把 <span class="hljs-keyword">a</span> 原来的值 <span class="hljs-number">5</span> 赋值给 b，然后 <span class="hljs-keyword">a</span> 自己再加 <span class="hljs-number">1</span> 变成 <span class="hljs-number">6</span>
 // 结果：<span class="hljs-keyword">a</span> = <span class="hljs-number">6</span>, b = <span class="hljs-number">5</span></code></pre>
+</div>
+<p>🔴当运用标准数学库时，要引用头文件include&lt;math.h&gt;</p>
+<p> (1).sqrt(计算平方根)：它是数学里的开根号。</p>
+<p> eg：</p>
+<p> a、b、c分别为三角形三边的边长（都为输入值），求它的面积</p>
+<p> 公元前60年，古希腊工程师海伦在《度量论》中首次证明了一个利用三角形三边边长求得三角形面积的海伦公式（我国古代数学家秦九韶在《数书九章》（1247年）独立提出等价的三斜求积术）：</p>
+<p>三角形面积=根号下s(s-a)(s-b)(s-c)   s = 1/2(a+b+c)</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int main<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
+{    
+double <span class="hljs-keyword">a</span>,b,c<span class="hljs-comment">;    </span>
+scanf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%lf %lf %lf&quot;</span>,&amp;<span class="hljs-keyword">a</span>, &amp;b, &amp;c<span class="hljs-punctuation">)</span><span class="hljs-comment">;    </span>
+double s = <span class="hljs-punctuation">(</span><span class="hljs-number">1</span>.<span class="hljs-number">0</span>/<span class="hljs-number">2</span><span class="hljs-punctuation">)</span>*<span class="hljs-punctuation">(</span><span class="hljs-keyword">a</span>+b+c<span class="hljs-punctuation">)</span><span class="hljs-comment">;    </span>
+double x = s*<span class="hljs-punctuation">(</span>s-<span class="hljs-keyword">a</span><span class="hljs-punctuation">)</span>*<span class="hljs-punctuation">(</span>s-b<span class="hljs-punctuation">)</span>*<span class="hljs-punctuation">(</span>s-c<span class="hljs-punctuation">)</span><span class="hljs-comment">;    </span>
+printf<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;circumference = %.2f, area = %.2f&quot;</span>,<span class="hljs-punctuation">(</span><span class="hljs-keyword">a</span>+b+c<span class="hljs-punctuation">)</span>*<span class="hljs-number">1</span>.<span class="hljs-number">0</span>,sqrt<span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+}</code></pre>
+</div>
+<p> （2).fmod(计算浮点数余数）：遇到小数取余必须用fmod（）</p>
+<p>   eg：求a÷b的余数（有输入）</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">cpp</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;math.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{    
+ <span class="hljs-type">double</span> a,b;    
+<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf %lf&quot;</span>,&amp;a, &amp;b);    
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%g&quot;</span>,<span class="hljs-built_in">fmod</span>(a,b));
+}</code></pre>
 </div>
 <p>2.关系运算符</p>
 <blockquote>
