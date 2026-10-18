@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">py的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-17T13:18:00+08:00">2026-10-17 13:18</time>
+        <time datetime="2026-10-18T12:04:00+08:00">2026-10-18 12:04</time>
         <span class="meta-dot"></span>
-        <span>7 分钟阅读</span>
+        <span>8 分钟阅读</span>
         
       </div>
     </header>
@@ -70,6 +70,8 @@
           <li class="toc-h2"><a href="#%E5%8D%81%E4%B8%89%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0">十三.输入函数</a></li>
           <li class="toc-h2"><a href="#%E5%8D%81%E5%9B%9B%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6">十四.转义字符</a></li>
           <li class="toc-h2"><a href="#%E5%8D%81%E4%BA%94if%E5%88%A4%E6%96%AD%EF%BC%8C%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97">十五.if判断，比较运算符，逻辑运算符，三目运算</a></li>
+          <li class="toc-h2"><a href="#%E5%8D%81%E5%85%AD%E5%B5%8C%E5%A5%97">十六.嵌套</a></li>
+          <li class="toc-h2"><a href="#%E5%8D%81%E4%B8%83%E5%BE%AA%E7%8E%AF">十七.循环</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -338,6 +340,121 @@ print<span class="hljs-punctuation">(</span><span class="hljs-keyword">a</span> 
 <span class="hljs-attr">result</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;成年&quot;</span> if age &gt;<span class="hljs-operator">=</span> 18 else <span class="hljs-string">&quot;未成年&quot;</span>
 print(result)      <span class="hljs-comment"># 成年</span></code></pre>
 </div>
+<h2 id="十六嵌套">十六.嵌套<a class="heading-anchor" href="#%E5%8D%81%E5%85%AD%E5%B5%8C%E5%A5%97" aria-label="链接到此标题">#</a></h2>
+<p><strong>嵌套（nesting） 就是在一个结构里面再放一个同类的结构。</strong></p>
+<p>Python 里常见嵌套：</p>
+<p>if 里面套 if          → 条件嵌套</p>
+<p>for 里面套 for        → 循环嵌套</p>
+<p>for 里面套 if         → 循环里套条件</p>
+<p>函数里定义函数         → 函数嵌套</p>
+<p>关键：靠缩进表示层级，缩进越多，层级越深。
+if 条件1:
+    if 条件2:          # 第 2 层
+        print(&quot;都成立&quot;)  # 第 3 层</p>
+<h2 id="十七循环">十七.循环<a class="heading-anchor" href="#%E5%8D%81%E4%B8%83%E5%BE%AA%E7%8E%AF" aria-label="链接到此标题">#</a></h2>
+<ol>
+<li>for 循环</li>
+</ol>
+<p>遍历一个序列（列表、字符串、range 等），逐个取出元素。</p>
+<p>语法：
+for 变量 in 可迭代对象:
+    循环体       </p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">for i <span class="hljs-type">in</span> range<span class="hljs-punctuation">(</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span>:
+print<span class="hljs-punctuation">(</span>i<span class="hljs-punctuation">)</span></code></pre>
+</div>
+<p> 输出：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">text</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-text">0
+1
+2
+3
+4</code></pre>
+</div>
+<ol start="3">
+<li>while 循环</li>
+</ol>
+<p><strong>条件为真就一直循环。</strong></p>
+<p>语法：
+ while 条件:
+    循环体</p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">apache</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-apache"><span class="hljs-attribute">i</span> = <span class="hljs-number">0</span>
+<span class="hljs-attribute">while</span> i &lt; <span class="hljs-number">5</span>:
+<span class="hljs-attribute">print</span>(i)
+<span class="hljs-attribute">i</span> += <span class="hljs-number">1</span>        # 千万别忘了，否则死循环</code></pre>
+</div>
+<p>输出：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">text</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-text">0
+1
+2
+3
+4</code></pre>
+</div>
+<p>场景 用哪个
+知道循环次数 / 遍历序列 for
+不知道次数，靠条件结束 while</p>
+<p>4、循环控制：break 和 continue</p>
+<p>（1）. break：立刻跳出整个循环</p>
+<p>（2）. continue：跳过本次，进入下一次</p>
+<ol start="5">
+<li>for-else 和 while-else（Python 特色）</li>
+</ol>
+<p>循环正常结束（没被 break 打断）时，执行 else：</p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">stylus</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-stylus"><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):
+<span class="hljs-keyword">if</span> <span class="hljs-selector-tag">i</span> == <span class="hljs-number">10</span>:
+    break
+<span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(i)</span></span>
+<span class="hljs-keyword">else</span>:
+<span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;循环正常结束&quot;</span>)</span></span></code></pre>
+</div>
+<p>输出：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">text</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-text">0
+1
+2
+3
+4</code></pre>
+</div>
+<p> 循环正常结束</p>
+<p>如果被 break 打断，else 不执行：</p>
+<p>5.循环嵌套</p>
+<p>一个循环里面再放一个循环，外层走一次，内层走一整圈。</p>
+<ol>
+<li><p>基本结构</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">dns</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-dns">for i <span class="hljs-type">in</span> range<span class="hljs-punctuation">(</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span>:        # 外层
+ for j <span class="hljs-type">in</span> range<span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span>:    # 内层
+   print<span class="hljs-punctuation">(</span>i, j<span class="hljs-punctuation">)</span></code></pre>
+</div>
+</li>
+</ol>
+<p>输出：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">basic</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span>
+<span class="hljs-symbol">0 </span><span class="hljs-number">1</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">0</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">1</span>
+<span class="hljs-symbol">2 </span><span class="hljs-number">0</span>
+<span class="hljs-symbol">2 </span><span class="hljs-number">1</span></code></pre>
+</div>
+<p>规律：
+外层 i=0 → 内层 j 走完 0,1
+外层 i=1 → 内层 j 走完 0,1
+外层 i=2 → 内层 j 走完 0,1</p>
 
       </div>
     </div>
