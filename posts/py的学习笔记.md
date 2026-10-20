@@ -405,6 +405,8 @@ for 里面套 if         → 循环里套条件
 for 变量 in 可迭代对象:
     循环体       
 
+理解：eg：for i in range（start，stop）
+
 eg：
 
     for i in range(5):
@@ -429,7 +431,7 @@ eg：
 eg：
 
     i = 0
-    while i < 5:
+    while i < 5:   #当i = 5时停止循环
     print(i)
     i += 1        # 千万别忘了，否则死循环
  
