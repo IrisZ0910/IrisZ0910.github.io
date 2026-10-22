@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">linux的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-22T08:21:00+08:00">2026-10-22 08:21</time>
+        <time datetime="2026-10-22T11:36:00+08:00">2026-10-22 11:36</time>
         <span class="meta-dot"></span>
-        <span>4 分钟阅读</span>
+        <span>5 分钟阅读</span>
         
       </div>
     </header>
@@ -154,12 +154,14 @@
 <p><strong>cat - 查看文件内容</strong></p>
 <p>详细解释：链接并打印文件内容到标准输出</p>
 <p>常用参数：</p>
-<p>  1.-n: 显示所有行的行号</p>
+<p>  1.-n: 显示所有行的行号 （eg：1.……2.……）使用行号可以快速定位重要信息</p>
 <p>  2.-A；显示特殊字符</p>
 <p>  3.-b：只显示非空行的行号</p>
 <p>  4.-s：压缩连续的空行为一行</p>
 <p>❤️常见错误：（1）用cat查看大文件（如GB级别的日志），会导致终端卡顿甚至崩溃</p>
 <p>  （2）cat &gt; file.txt会直接覆盖文件内容，而不是追加（追加应该用cat&gt;&gt;file.txt）</p>
+<p>   cat /文件（就可以查看内容）</p>
+<p>  使用-A时，eg：用tab和用空格肉眼看都是一样的，用-A就可以查看到区别（^I是tab,$是回车键）</p>
 
       </div>
     </div>
