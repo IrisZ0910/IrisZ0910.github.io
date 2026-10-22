@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">linux的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-22T07:03:00+08:00">2026-10-22 07:03</time>
+        <time datetime="2026-10-22T08:21:00+08:00">2026-10-22 08:21</time>
         <span class="meta-dot"></span>
-        <span>3 分钟阅读</span>
+        <span>4 分钟阅读</span>
         
       </div>
     </header>
@@ -56,6 +56,7 @@
         <p class="toc-title">目录</p>
         <ul>
           <li class="toc-h2"><a href="#%E4%B8%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB">一.文件管理类</a></li>
+          <li class="toc-h2"><a href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB">二.文件查看类</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -133,9 +134,32 @@
 <p><strong>mv - 移动或重命名文件/目录</strong></p>
 <p>详细解释：移动文件或目录到另一个位置，或者重命名文件/目录</p>
 <p>常用参数：</p>
-<p>  1.-r：交互式移动，覆盖前会提示确认</p>
+<p>  1.-i：交互式移动，覆盖前会提示确认</p>
 <p>  2.-f：强制移动，不提示确认</p>
 <p>  3.-n：不覆盖已存在的文件</p>
+<p>用法：mv 文件 /目录 （将文件移动在这个目录里）</p>
+<p>   mv 文件名 新文件名（相当于改名）</p>
+<p><strong>find - 搜索文件和目录</strong></p>
+<p>详细解释：在指定的目录树中搜索符合条件的文件和目录，功能非常强大</p>
+<p>常用参数：</p>
+<p>  1.-name：按文件名搜索（支持通配符）</p>
+<p>  2.-size：按文件大小搜索（+100M表示大于100MB，-10K表示小于10KB）</p>
+<p>  3.-mtime：按修改时间搜索（-7表示7天内修改的，+就是代表几天之外的，-就是代表几天之内的）</p>
+<p>  ❤️常见错误：路径错误导致搜索范围不对（eg：find/-name&quot;*.txt&quot;会搜索整个系统，速度很慢）</p>
+<p>  ~find / -name 文件名 （直接在全盘找文件） eg：find /目录 -name（就是在这个目录下找文件）</p>
+<p>  通配符：.*,当只记得名字不记得后缀时，就可以用通配符占用寻找（模糊搜索的方法）</p>
+<p>  ~find / -size +100M  (就可以找到大于100MB的文件)</p>
+<p>  ~find / -mtime （通常适用于老文件，进行转移或者直接删除）</p>
+<h2 id="二文件查看类">二.文件查看类<a class="heading-anchor" href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB" aria-label="链接到此标题">#</a></h2>
+<p><strong>cat - 查看文件内容</strong></p>
+<p>详细解释：链接并打印文件内容到标准输出</p>
+<p>常用参数：</p>
+<p>  1.-n: 显示所有行的行号</p>
+<p>  2.-A；显示特殊字符</p>
+<p>  3.-b：只显示非空行的行号</p>
+<p>  4.-s：压缩连续的空行为一行</p>
+<p>❤️常见错误：（1）用cat查看大文件（如GB级别的日志），会导致终端卡顿甚至崩溃</p>
+<p>  （2）cat &gt; file.txt会直接覆盖文件内容，而不是追加（追加应该用cat&gt;&gt;file.txt）</p>
 
       </div>
     </div>
