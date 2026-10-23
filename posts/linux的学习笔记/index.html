@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>linux的学习笔记 · 我的博客</title>
-<meta name="description" content="一.文件管理类 cd - 切换目录 详细解释：改变当前工作目录，是导航linux文件系统的核心命令 常用参数： 1. cd /根目录(最开始的页面) ls 可以列出当前目录下的文件夹以及有哪些文件（子目录） pwd可以看见当前所在位置的路径 eg: cd /etc +回车，就进入…">
+<meta name="description" content="一.linux目录结构 1.第一梯队：（1）/root：是超级管理员专属的“私人房间”（主目录） （2）/home：普通用户，家目录的仓库，通常放个人数据（eg：日常文件夹，个人代码和文件，个人配置文件（隐藏文件）） （3）🔴/etc：系统所有配置文件目录（eg：系统服务，配置…">
 <meta name="author" content="IrisZ">
 <meta property="og:title" content="linux的学习笔记 · 我的博客">
-<meta property="og:description" content="一.文件管理类 cd - 切换目录 详细解释：改变当前工作目录，是导航linux文件系统的核心命令 常用参数： 1. cd /根目录(最开始的页面) ls 可以列出当前目录下的文件夹以及有哪些文件（子目录） pwd可以看见当前所在位置的路径 eg: cd /etc +回车，就进入…">
+<meta property="og:description" content="一.linux目录结构 1.第一梯队：（1）/root：是超级管理员专属的“私人房间”（主目录） （2）/home：普通用户，家目录的仓库，通常放个人数据（eg：日常文件夹，个人代码和文件，个人配置文件（隐藏文件）） （3）🔴/etc：系统所有配置文件目录（eg：系统服务，配置…">
 <meta property="og:type" content="article">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/atom+xml" title="我的博客" href="/atom.xml">
@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">linux的学习笔记</h1>
       <div class="post-meta">
-        <time datetime="2026-10-23T06:03:00+08:00">2026-10-23 06:03</time>
+        <time datetime="2026-10-23T07:03:00+08:00">2026-10-23 07:03</time>
         <span class="meta-dot"></span>
-        <span>6 分钟阅读</span>
+        <span>7 分钟阅读</span>
         
       </div>
     </header>
@@ -55,12 +55,20 @@
       <aside class="toc" aria-label="目录">
         <p class="toc-title">目录</p>
         <ul>
-          <li class="toc-h2"><a href="#%E4%B8%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB">一.文件管理类</a></li>
-          <li class="toc-h2"><a href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB">二.文件查看类</a></li>
+          <li class="toc-h2"><a href="#%E4%B8%80linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">一.linux目录结构</a></li>
+          <li class="toc-h2"><a href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB">二.文件管理类</a></li>
+          <li class="toc-h2"><a href="#%E4%B8%89%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB">三.文件查看类</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
-<h2 id="一文件管理类">一.文件管理类<a class="heading-anchor" href="#%E4%B8%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB" aria-label="链接到此标题">#</a></h2>
+<h2 id="一linux目录结构">一.linux目录结构<a class="heading-anchor" href="#%E4%B8%80linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" aria-label="链接到此标题">#</a></h2>
+<p>1.第一梯队：（1）/root：是超级管理员专属的“私人房间”（主目录） </p>
+<p>（2）/home：普通用户，家目录的仓库，通常放个人数据（eg：日常文件夹，个人代码和文件，个人配置文件（隐藏文件））</p>
+<p>（3）🔴/etc：系统所有配置文件目录（eg：系统服务，配置参数，账号，开机自启）后期改ip或主机名等要用到</p>
+<p>（4）/bin + /sbin：（所有用户都能执行的一个基础命令，sbin是管理员才能用的命令）</p>
+<p>（5）/usr：作用是系统安装软件，应用程序，文档库文件的存放地（头文件库文件都是存放在这）</p>
+<p>（6）/var：动态变化数据目录（日志，缓存，排查故障就需要去看）</p>
+<h2 id="二文件管理类">二.文件管理类<a class="heading-anchor" href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB" aria-label="链接到此标题">#</a></h2>
 <p><strong>cd - 切换目录</strong></p>
 <p>详细解释：改变当前工作目录，是导航linux文件系统的核心命令</p>
 <p>常用参数：</p>
@@ -150,7 +158,7 @@
 <p>  通配符：.*,当只记得名字不记得后缀时，就可以用通配符占用寻找（模糊搜索的方法）</p>
 <p>  ~find / -size +100M  (就可以找到大于100MB的文件)</p>
 <p>  ~find / -mtime （通常适用于老文件，进行转移或者直接删除）</p>
-<h2 id="二文件查看类">二.文件查看类<a class="heading-anchor" href="#%E4%BA%8C%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB" aria-label="链接到此标题">#</a></h2>
+<h2 id="三文件查看类">三.文件查看类<a class="heading-anchor" href="#%E4%B8%89%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E7%B1%BB" aria-label="链接到此标题">#</a></h2>
 <p><strong>cat - 查看文件内容</strong></p>
 <p>详细解释：链接并打印文件内容到标准输出</p>
 <p>常用参数：</p>
