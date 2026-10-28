@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-10-28T10:48:00+08:00">2026-10-28 10:48</time>
+        <time datetime="2026-10-28T12:50:00+08:00">2026-10-28 12:50</time>
         <span class="meta-dot"></span>
-        <span>1 分钟阅读</span>
+        <span>3 分钟阅读</span>
         
       </div>
     </header>
@@ -75,6 +75,93 @@
 <p>  （2）十六进制一位 = 4位，所以2个十六进制位 = 1字节</p>
 <p>  （3）x86-64时小端序：低字节放在低地址里</p>
 <p>  🔴🔴🔴看内存时，地址从低到高；读多字节值时，要反过来拼</p>
+<p>4.寄存器：先记“8个常用+2个特殊”</p>
+<p> x86-64有16个通用寄存器：rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15</p>
+<p> (1)rax:返回值，系统调用号，累加</p>
+<p> （2）rdi：第一个函数参数</p>
+<p> （3）rsi：第二个函数参数</p>
+<p> （4）rdx：第三个函数参数</p>
+<p> （5）rcx：第四个函数参数</p>
+<p> （6）r8：第五个函数参数</p>
+<p> （7）r9：第六个函数参数</p>
+<p> （8）rsp：栈顶指针</p>
+<p> （9）rbp：栈帧基址，常用来定位局部变量</p>
+<p> （10）rip：下一条指令地址，不能直接mov改</p>
+<p> 寄存器有不同位宽名字：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-number">64</span>位：<span class="hljs-built_in">rax</span>
+<span class="hljs-number">32</span>位：<span class="hljs-built_in">eax</span>
+<span class="hljs-number">16</span>位：<span class="hljs-built_in">ax</span>
+<span class="hljs-number">8</span>位：<span class="hljs-built_in">al</span></code></pre>
+</div>
+<p> 🔴写32位寄存器会清零高32位（意思就是eax不是独立寄存器，它是rax的低32位。你写eax时，CPU会把rax的低32位改成新值，同时把高32位强制清零）</p>
+<p>4.内存寻址</p>
+<p> 最常用形式：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">angelscript</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-angelscript"><span class="hljs-string"> [基址 + 索引*比例 + 偏移]</span></code></pre>
+</div>
+<p>  eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"> <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,[<span class="hljs-built_in">rbx</span>]        <span class="hljs-comment">;取rbx指向的4字节</span>
+ <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,[<span class="hljs-built_in">rbx</span>+<span class="hljs-number">8</span>]      <span class="hljs-comment">;取rbx+8处的4字节</span>
+ <span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>,[<span class="hljs-built_in">rbx</span>+<span class="hljs-built_in">rcx</span>*<span class="hljs-number">4</span>]  <span class="hljs-comment">;数组访问：基址+索引</span></code></pre>
+</div>
+<p>5.第一批指令：只记它们改变什么</p>
+<p>  （1）mov：搬数据</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">3</span>       <span class="hljs-comment">; eax = 3</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-built_in">rax</span>     <span class="hljs-comment">; rdi = rax</span>
+<span class="hljs-keyword">mov</span> [<span class="hljs-built_in">rsp</span>], <span class="hljs-built_in">rax</span>   <span class="hljs-comment">; 把 rax 写到栈顶内存</span></code></pre>
+</div>
+<p> （2）add/sub：加减，并改标志位</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">perl</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-perl">mov eax, <span class="hljs-number">5</span>
+add eax, <span class="hljs-number">3</span>       ; eax = <span class="hljs-number">8</span>
+<span class="hljs-function"><span class="hljs-keyword">sub</span> <span class="hljs-title">eax</span>, 1       </span>; eax = <span class="hljs-number">7</span></code></pre>
+</div>
+<p>（3）cmp：做减法，但不保存结果，只改标志位</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>，<span class="hljs-number">7</span></code></pre>
+</div>
+<p>它相当于eax - 7，但eax不变，只设置：</p>
+<p>   ZF=1：相等</p>
+<p>   SF：结果为负</p>
+<p>   CF：无符号借位</p>
+<p>   OF：有符号溢出</p>
+<p>（4） jmp/jcc：改rip</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">llvm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-llvm">jmp <span class="hljs-type">label</span>        <span class="hljs-comment">; 无条件跳</span>
+je  <span class="hljs-type">label</span>        <span class="hljs-comment">; ZF=1 时跳，相等</span>
+jne <span class="hljs-type">label</span>        <span class="hljs-comment">; ZF=0 时跳，不相等</span>
+jg  <span class="hljs-type">label</span>        <span class="hljs-comment">; 有符号大于</span>
+jl  <span class="hljs-type">label</span>        <span class="hljs-comment">; 有符号小于</span>
+ja  <span class="hljs-type">label</span>        <span class="hljs-comment">; 无符号大于</span>
+jb  <span class="hljs-type">label</span>        <span class="hljs-comment">; 无符号小于</span></code></pre>
+</div>
+<p>  核心组合：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-keyword">cmp</span> <span class="hljs-built_in">eax</span>, <span class="hljs-number">7</span>
+<span class="hljs-keyword">je</span> equal</code></pre>
+</div>
+<p> 意思是：比较eax和7，如果相等就跳到equal</p>
+<p>（5）push/pop/call/ret</p>
+<p> 先记行为：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">llvm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-llvm">push rax   <span class="hljs-comment">; rsp = rsp - 8; [rsp] = rax</span>
+pop rax    <span class="hljs-comment">; rax = [rsp]; rsp = rsp + 8</span>
+<span class="hljs-keyword">call</span> f     <span class="hljs-comment">; 把返回地址压栈，然后跳到 f</span>
+<span class="hljs-keyword">ret</span>        <span class="hljs-comment">; 从栈弹出返回地址到 rip</span></code></pre>
+</div>
+<p> 栈是低地址增长的。</p>
 
       </div>
     </div>

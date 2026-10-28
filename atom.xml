@@ -5,27 +5,27 @@
   <link href="https://irisz0910.github.io/atom.xml" rel="self"/>
   <link href="https://irisz0910.github.io/"/>
   <id>https://irisz0910.github.io/</id>
-  <updated>2026-10-28T10:48:00+08:00</updated>
+  <updated>2026-10-28T12:50:00+08:00</updated>
   <author><name>IrisZ</name></author>
   <entry>
     <title type="html">linux的学习笔记</title>
     <link href="https://irisz0910.github.io/posts/linux%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://irisz0910.github.io/posts/linux%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <updated>2026-10-28T10:48:00+08:00</updated>
+    <updated>2026-10-28T12:50:00+08:00</updated>
     <summary type="html">一.linux目录结构 1.第一梯队：（1）/root：是超级管理员专属的“私人房间”（主目录） （2）/home：普通用户，家目录的仓库，通常放个人数据（eg：日常文件夹，个人代码和文件，个人配置文件（隐藏文件）） （3）🔴/etc：系统所有配置文件目录（eg：系统服务，配置…</summary>
   </entry>
   <entry>
     <title type="html">py的学习笔记</title>
     <link href="https://irisz0910.github.io/posts/py%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://irisz0910.github.io/posts/py%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <updated>2026-10-28T10:48:00+08:00</updated>
+    <updated>2026-10-28T12:50:00+08:00</updated>
     <summary type="html">一.python 是强类型的动态脚本语言 是一种面向对象的解释型高级编程语言 二.出现的常见四种bug： 1.中文符号（必须英文模式下） 2.缩进错误(四个空格)（print 顶格写) 3.无效语法（一个print必须单独写一行)遇到syntax说明语法有问题 4.命名错误(中英…</summary>
   </entry>
   <entry>
     <title type="html">汇编学习</title>
     <link href="https://irisz0910.github.io/posts/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/"/>
     <id>https://irisz0910.github.io/posts/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/</id>
-    <updated>2026-10-28T10:48:00+08:00</updated>
+    <updated>2026-10-28T12:50:00+08:00</updated>
     <summary type="html">给自己一句话：学汇编不是背指令，而是学会看执行这条指令前后状态怎么变 一.基础模型 “基础模型” = 初学汇编时的最小心智地图：CPU有哪些状态，指令怎么改这些状态（就是CPU + 内存 + 他们之间的数据流） 1.CPU是一个“状态机”它反复做三件事：取指令，译码，执行 每条指…</summary>
   </entry>
   <entry>
