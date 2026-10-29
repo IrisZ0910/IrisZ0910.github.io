@@ -45,7 +45,7 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-10-29T09:17:00+08:00">2026-10-29 09:17</time>
+        <time datetime="2026-10-29T09:23:00+08:00">2026-10-29 09:23</time>
         <span class="meta-dot"></span>
         <span>6 分钟阅读</span>
         
@@ -245,13 +245,18 @@ sum:</span>
 <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rdi</span>
 <span class="hljs-keyword">add</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rsi</span> 
 
-<span class="hljs-keyword">ret</span> 
-
-例如，下面声明了一个函数sum：</code></pre>
+<span class="hljs-keyword">ret</span> </code></pre>
 </div>
 <p>  • section .text：告诉汇编器，下面写的是代码（指令），这跟存放变量的数据段 .data 是分开的。</p>
 <p>  • global sum：有了这句，其他的 .c 文件或 .asm 文件才能调用这个 sum 函数。如果没有 global，它就只能是当前文件内部使用。</p>
 <p>  • call 和 ret：call 用于调用函数，ret 用于结束函数并跳回调用它的地方（通常依赖于堆栈里的返回地址）。</p>
+<p>   调用我们的sum函数：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"> <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-number">3</span> 
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">rsi</span>, <span class="hljs-number">5</span>  
+<span class="hljs-keyword">call</span> sum</code></pre>
+</div>
 
       </div>
     </div>
