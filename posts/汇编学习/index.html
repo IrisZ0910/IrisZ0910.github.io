@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-10-29T07:08:00+08:00">2026-10-29 07:08</time>
+        <time datetime="2026-10-29T09:17:00+08:00">2026-10-29 09:17</time>
         <span class="meta-dot"></span>
-        <span>4 分钟阅读</span>
+        <span>6 分钟阅读</span>
         
       </div>
     </header>
@@ -60,7 +60,8 @@
           <li class="toc-h3"><a href="#1%E6%B3%A8%E9%87%8A">1.注释</a></li>
           <li class="toc-h3"><a href="#2%E5%B8%B8%E9%87%8F">2.常量</a></li>
           <li class="toc-h3"><a href="#3%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88gprs%EF%BC%89">3.通用寄存器（GPRs）</a></li>
-          <li class="toc-h3"><a href="#4">4.</a></li>
+          <li class="toc-h3"><a href="#4%E6%8C%87%E4%BB%A4">4.指令</a></li>
+          <li class="toc-h3"><a href="#5%E5%87%BD%E6%95%B0">5.函数</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -196,7 +197,61 @@ pop rax    <span class="hljs-comment">; rax = [rsp]; rsp = rsp + 8</span>
 rn        rnd        rnw    rnb</code></pre>
 </div>
 <p>  当使用不足 64 位时，访问的通常是寄存器的低位部分。 这条规则的例外是ah、bh、ch和dh，它们访问的是寄存器 16 位部分中的高 8 位。  </p>
-<h3 id="4">4.<a class="heading-anchor" href="#4" aria-label="链接到此标题">#</a></h3>
+<p>  其中一些寄存器在函数调用之间必须保留:rbp、rsp、rbx、r12、r13、r14和r15。 未能保留它们可能导致错误或未定义行为。</p>
+<p>  🔴🔴🔴其余的则不需要保留，可以自由使用：rax、rcx、rdx、rdi、rsi、r8、r9、r10和r11。</p>
+<h3 id="4指令">4.指令<a class="heading-anchor" href="#4%E6%8C%87%E4%BB%A4" aria-label="链接到此标题">#</a></h3>
+<p>指令是 CPU 能够执行的一个个计算操作。 它们通常具有以下形式：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">bash</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-bash">name destination, <span class="hljs-built_in">source</span></code></pre>
+</div>
+<p>也就是说，指令名放在最前面，然后是至少一个空白字符，接着是目标操作数、一个逗号（,），最后是源操作数。 指令通常不会修改源操作数，只会修改目标操作数。</p>
+<p>除非另有说明，两个操作数的大小必须相同。 例如，如果源操作数是 16 位，那么目标操作数也必须是 16 位。</p>
+<p> （1）目标操作数：指令结果要放进去的那个操作数，通常是“被写入/被修改”的一方。</p>
+<p> （2）源操作数：给指令提供输入数据的那个操作数，通常是“被读取”的一方。</p>
+<p> 例如，要把一个值存入寄存器，可以使用mov指令：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"> <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>，<span class="hljs-built_in">rdx</span>  <span class="hljs-comment">;就是把rdx的值复制到rax中</span></code></pre>
+</div>
+<p>  在大多数指令中，可以使用常量整数作为源操作数（但不能作为目标操作数）：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">rcx</span>, <span class="hljs-number">42</span>   </code></pre>
+</div>
+<h3 id="5函数">5.函数<a class="heading-anchor" href="#5%E5%87%BD%E6%95%B0" aria-label="链接到此标题">#</a></h3>
+<p> 指令被组织在函数中。 所有函数都放在源文件的section .text中。</p>
+<p> 一个函数声明由以下部分组成：</p>
+<ol>
+<li><p>一个带有函数名的标签，后面跟一个:。</p>
+</li>
+<li><p>定义该函数的指令。</p>
+</li>
+<li><p>返回指令ret。</p>
+</li>
+</ol>
+<p>   传参：前六个整数参数 通过寄存器传给函数。 它们的传递顺序如下：rdi、rsi、rdx、rcx、r8和r9。</p>
+<p>   返回值：整数的计算结果通过rax寄存器从函数返回。</p>
+<p>   要调用函数，我们使用call指令。 在同一源文件中，函数可以在任何地方被调用。 要让函数对其他源文件可见，必须使用global指令。</p>
+<p>   例如，下面声明了一个函数sum：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-meta">section</span> .text 
+
+<span class="hljs-meta">global</span> sum 
+<span class="hljs-symbol">
+sum:</span>
+
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rdi</span>
+<span class="hljs-keyword">add</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rsi</span> 
+
+<span class="hljs-keyword">ret</span> 
+
+例如，下面声明了一个函数sum：</code></pre>
+</div>
+<p>  • section .text：告诉汇编器，下面写的是代码（指令），这跟存放变量的数据段 .data 是分开的。</p>
+<p>  • global sum：有了这句，其他的 .c 文件或 .asm 文件才能调用这个 sum 函数。如果没有 global，它就只能是当前文件内部使用。</p>
+<p>  • call 和 ret：call 用于调用函数，ret 用于结束函数并跳回调用它的地方（通常依赖于堆栈里的返回地址）。</p>
 
       </div>
     </div>
