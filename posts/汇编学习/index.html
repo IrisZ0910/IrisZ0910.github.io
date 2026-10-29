@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-10-28T12:50:00+08:00">2026-10-28 12:50</time>
+        <time datetime="2026-10-29T07:08:00+08:00">2026-10-29 07:08</time>
         <span class="meta-dot"></span>
-        <span>3 分钟阅读</span>
+        <span>4 分钟阅读</span>
         
       </div>
     </header>
@@ -56,6 +56,11 @@
         <p class="toc-title">目录</p>
         <ul>
           <li class="toc-h2"><a href="#%E4%B8%80%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B">一.基础模型</a></li>
+          <li class="toc-h2"><a href="#%E4%BA%8C%E5%9F%BA%E7%A1%80">二.基础</a></li>
+          <li class="toc-h3"><a href="#1%E6%B3%A8%E9%87%8A">1.注释</a></li>
+          <li class="toc-h3"><a href="#2%E5%B8%B8%E9%87%8F">2.常量</a></li>
+          <li class="toc-h3"><a href="#3%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88gprs%EF%BC%89">3.通用寄存器（GPRs）</a></li>
+          <li class="toc-h3"><a href="#4">4.</a></li>
         </ul>
       </aside>
       <div class="post-content prose">
@@ -161,7 +166,37 @@ pop rax    <span class="hljs-comment">; rax = [rsp]; rsp = rsp + 8</span>
 <span class="hljs-keyword">call</span> f     <span class="hljs-comment">; 把返回地址压栈，然后跳到 f</span>
 <span class="hljs-keyword">ret</span>        <span class="hljs-comment">; 从栈弹出返回地址到 rip</span></code></pre>
 </div>
-<p> 栈是低地址增长的。</p>
+<p> 栈是低地址增长的。   </p>
+<h2 id="二基础">二.基础<a class="heading-anchor" href="#%E4%BA%8C%E5%9F%BA%E7%A1%80" aria-label="链接到此标题">#</a></h2>
+<h3 id="1注释">1.注释<a class="heading-anchor" href="#1%E6%B3%A8%E9%87%8A" aria-label="链接到此标题">#</a></h3>
+<p>  注释以分号（;）开头。</p>
+<p>  注释可以放在程序中的任何位置，;之后的所有内容都会被汇编器忽略。</p>
+<h3 id="2常量">2.常量<a class="heading-anchor" href="#2%E5%B8%B8%E9%87%8F" aria-label="链接到此标题">#</a></h3>
+<p> 在 NASM 中，可以用equ定义字符汇编期常量。 例如，下面定义了一个名为UNIVERSE、值为42的常量：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">apache</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-apache"><span class="hljs-attribute">UNIVERSE</span> equ <span class="hljs-number">42</span></code></pre>
+</div>
+<p>常量在定义时求值一次，之后_不能_重新定义。</p>
+<h3 id="3通用寄存器（gprs）">3.通用寄存器（GPRs）<a class="heading-anchor" href="#3%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88gprs%EF%BC%89" aria-label="链接到此标题">#</a></h3>
+<p>  在汇编中，我们通常用寄存器来存储值，而不是变量。 CPU 寄存器是处理器内部的一小块高速内存。 大多数计算都在 CPU 的寄存器中进行。</p>
+<p>  有些寄存器用于各种不同的计算，称为通用寄存器（GPRs）。 另一些则有特殊或专门的用途。</p>
+<p>  在 x86-64 中，有 16 个 64 位通用寄存器（GPRs），它们也可以按 32 位、16 位或 8 位访问。 下面列出了这些通用寄存器，其中rn里的n取值为 8 到 15：r8、r9、r10、r11、r12、r13、r14和r15。</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"><span class="hljs-number">64</span>-bit    <span class="hljs-number">32</span>-bit    <span class="hljs-number">16</span>-bit    <span class="hljs-number">8</span>-bit
+<span class="hljs-built_in">rax</span>       <span class="hljs-built_in">eax</span>        <span class="hljs-built_in">ax</span>    <span class="hljs-number">ah</span>/<span class="hljs-built_in">al</span>
+<span class="hljs-built_in">rbx</span>       <span class="hljs-built_in">ebx</span>        <span class="hljs-built_in">bx</span>    <span class="hljs-number">bh</span>/<span class="hljs-built_in">bl</span>
+<span class="hljs-built_in">rcx</span>       <span class="hljs-built_in">ecx</span>        <span class="hljs-built_in">cx</span>    <span class="hljs-number">ch</span>/<span class="hljs-built_in">cl</span>
+<span class="hljs-built_in">rdx</span>       <span class="hljs-built_in">edx</span>        <span class="hljs-built_in">dx</span>    <span class="hljs-number">dh</span>/<span class="hljs-built_in">dl</span>
+<span class="hljs-built_in">rsi</span>       <span class="hljs-built_in">esi</span>        <span class="hljs-built_in">si</span>    <span class="hljs-built_in">sil</span>
+<span class="hljs-built_in">rdi</span>       <span class="hljs-built_in">edi</span>        <span class="hljs-built_in">di</span>    <span class="hljs-built_in">dil</span>
+<span class="hljs-built_in">rbp</span>       <span class="hljs-built_in">ebp</span>        <span class="hljs-built_in">bp</span>    <span class="hljs-built_in">bpl</span>
+<span class="hljs-built_in">rsp</span>       <span class="hljs-built_in">esp</span>        <span class="hljs-built_in">sp</span>    <span class="hljs-built_in">spl</span>
+rn        rnd        rnw    rnb</code></pre>
+</div>
+<p>  当使用不足 64 位时，访问的通常是寄存器的低位部分。 这条规则的例外是ah、bh、ch和dh，它们访问的是寄存器 16 位部分中的高 8 位。  </p>
+<h3 id="4">4.<a class="heading-anchor" href="#4" aria-label="链接到此标题">#</a></h3>
 
       </div>
     </div>
