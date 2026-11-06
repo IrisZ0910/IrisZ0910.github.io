@@ -45,9 +45,9 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-10-29T13:35:00+08:00">2026-10-29 13:35</time>
+        <time datetime="2026-11-06T05:59:00+08:00">2026-11-06 05:59</time>
         <span class="meta-dot"></span>
-        <span>7 分钟阅读</span>
+        <span>8 分钟阅读</span>
         
       </div>
     </header>
@@ -261,7 +261,28 @@ sum:</span>
 <h3 id="6整数">6.整数<a class="heading-anchor" href="#6%E6%95%B4%E6%95%B0" aria-label="链接到此标题">#</a></h3>
 <p><strong>二进制表示法</strong></p>
 <p>整数是一种抽象，用来表示没有小数部分的数，要把整数表示成字节序列，就要用到二进制表示法</p>
-<p><strong>无符号数</strong></p>
+<p><strong>无符号数(只看整数和零)</strong></p>
+<p>本质：所有的二进制位(bit)全都用来表示数值大小，没有“负号”这个概念</p>
+<p>范围：如果是一个64位寄存器(比如rax),他能表示的最小值是0（64个0），最大值是2的64次方-1（64个1）</p>
+<p>🔴零扩展：当你把一个比较小的数（比如8位）塞进一个比较大的空间里（比如64位）时，高位直接填0，因为高位填0，不改变原数值的大小</p>
+<p>（1）在64位CPU里，rax是一个64位的大容器，他被切成了好几块：</p>
+<p>整个64位叫rax</p>
+<p>它的低32位叫eax</p>
+<p>它的低16位叫ax</p>
+<p>它的低8位叫al</p>
+<p>结构：</p>
+<p>rax：[   高32位   |   低32位（eax）   ]</p>
+<p>（2）总结口诀：</p>
+<p>写al/ax：只改变局部，高位保留原样</p>
+<p>写eax：自动把高32位全部清零</p>
+<p>写rax：整个64位覆盖</p>
+<p>（3）相关指令：</p>
+<p>movzx（Move with Zero Extend）。</p>
+<p>eg：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">apache</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-apache"><span class="hljs-attribute">movzx</span> rax,al   ;把al(<span class="hljs-number">8</span>位)的值放进rax(<span class="hljs-number">64</span>位)，rax的高<span class="hljs-number">56</span>位全部自动填<span class="hljs-number">0</span></code></pre>
+</div>
 <p>如果一个数只能取非负值，就称为无符号数。</p>
 <p>无符号数直接表示为其序列中所有置位所对应的 2 的幂之和。</p>
 <p>寄存器中可表示的非负整数范围，从0（没有位被置位）到2⁶⁴ - 1（64 位全部置位之和）。</p>
