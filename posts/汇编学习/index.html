@@ -45,7 +45,7 @@
       <a class="back-link" href="/">← 返回首页</a>
       <h1 class="post-title">汇编学习</h1>
       <div class="post-meta">
-        <time datetime="2026-11-06T05:59:00+08:00">2026-11-06 05:59</time>
+        <time datetime="2026-11-06T07:09:00+08:00">2026-11-06 07:09</time>
         <span class="meta-dot"></span>
         <span>8 分钟阅读</span>
         
@@ -283,10 +283,31 @@ sum:</span>
   <div class="code-head"><span class="code-lang">apache</span><button class="code-copy" type="button">复制</button></div>
   <pre><code class="hljs language-apache"><span class="hljs-attribute">movzx</span> rax,al   ;把al(<span class="hljs-number">8</span>位)的值放进rax(<span class="hljs-number">64</span>位)，rax的高<span class="hljs-number">56</span>位全部自动填<span class="hljs-number">0</span></code></pre>
 </div>
-<p>如果一个数只能取非负值，就称为无符号数。</p>
-<p>无符号数直接表示为其序列中所有置位所对应的 2 的幂之和。</p>
-<p>寄存器中可表示的非负整数范围，从0（没有位被置位）到2⁶⁴ - 1（64 位全部置位之和）。</p>
-<p>把无符号数扩展到更大的位宽时，把所有高位都填上0，这样新增的位不会对值产生任何贡献。这称为零扩展。</p>
+<p><em><strong>有符号数（signed）(分正负)</strong></em></p>
+<p>1.本质：计算机怎么表示负数？用的是“补码”。</p>
+<p>2.符号位：最高位（最左边那一位）不参与直接表示大小了，它成了”符号位“。如果是0，代表正数；如果是1，代表负数。</p>
+<p>3.范围：64位有符号数的范围大概是-2的63次方到2的63次方-1.</p>
+<p>4.怎么算值：</p>
+<p>eg：8位数1000 0001：最高位的1代表-128，后面的000 0001代表1，加起来就是-128+1 = -127</p>
+<p>5.🔴符号扩展（负数搬家不能变样）</p>
+<p>  如果你要扩展一个有符号数，新增的高位必须全部填原来的符号位</p>
+<p>  （1）如果是正数（最高位是0），高位就全填0</p>
+<p>  （2）如果是负数（最高位是1），高位就全填1</p>
+<p>  eg：</p>
+<p>  -1从8位扩展到16位，不是0000 0000 1111 1111，而是1111 1111 1111 1111 这样 它依旧是-1</p>
+<p>  对应指令：</p>
+<p>   movsx(Move with Sign Extend)用于8/16位扩展，movsxd专门用于32位扩展到64位</p>
+<p>6.负号反转neg指令</p>
+<p> 格式：</p>
+<div class="code-block">
+  <div class="code-head"><span class="code-lang">x86asm</span><button class="code-copy" type="button">复制</button></div>
+  <pre><code class="hljs language-x86asm"> <span class="hljs-keyword">neg</span> 源操作数
+
+ eg：<span class="hljs-built_in">al</span> = <span class="hljs-number">5</span>
+     <span class="hljs-keyword">neg</span> <span class="hljs-built_in">al</span>  ；<span class="hljs-built_in">al</span>就变成了-<span class="hljs-number">5</span>
+     再反向执行一次（负负得正）
+     <span class="hljs-keyword">neg</span> <span class="hljs-built_in">al</span>  ；此时又变回了-<span class="hljs-number">5</span></code></pre>
+</div>
 
       </div>
     </div>
